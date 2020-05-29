@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if editMode %}
+ <h1 style="text-align: center; margin-top:50px">Modification du profil</h1>
+{% else %}
+<h1 style="text-align: center; margin-top:50px">Formulaire d'inscription</h1>
+  {% endif %}
+<div class="container">
+
+ {{ form_start(form)}}
+<div class="row" style="max-width:800px; margin:auto; margin-top:50px;">
+
+  <div class="col">
+
+    {{ form_row(form.firstname, {'label': 'Prénom:', 'attr':{'placeholder':'Prénom'}}) }}
+    {{ form_row(form.lastname, {'label': 'Nom:', 'attr':{'placeholder':'Nom'}}) }}
+    {{ form_row(form.address, {'label': 'Adresse:', 'attr':{'placeholder':'Adresse + numéro'}}) }}
+    {{ form_row(form.postalCode, {'label': 'Code postal:', 'attr':{'placeholder':'Code postal'}}) }}
+    {{ form_row(form.city, {'label': 'Ville:', 'attr':{'placeholder':'Ville'}}) }}
+  </div>
+  <div class="col">
+    {{ form_row(form.email, {'label': 'Email:', 'attr':{'placeholder':'Email'}}) }}
+    {% if editMode %}
+    {{ form_row(form.password, {'label': 'Modifier le mot de passe:', 'attr':{'placeholder':'Mot de passe'}}) }}
+      {% else %}
+    {{ form_row(form.password, {'label': 'Mot de passe:', 'attr':{'placeholder':'Mot de passe'}}) }}
+      {% endif %}
+    {{ form_row(form.confirm_password, {'label': 'Confirmation du mot de passe:', 'attr':{'placeholder':'Confirmation'}}) }}
+    
+  <button type="submit" class="btn btn-success">
+ 
+  {% if editMode %}
+  Enregistrer
+  {% else %}
+  Valider
+  {% endif %}
+  </button>
+
+
+  </div>
+</div>
+  {{ form_end(form)}}
+</div>
+
+
+
+{% endblock %}

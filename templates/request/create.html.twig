@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formRequest 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Ajouter une annonce{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .banniere { margin-top: 60px; background: #048b9a; border: 1px solid #048b9a; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
+    .containerService{ margin-bottom: 25px;}
+    .btnService{ }
+    .title { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
+</style>
+
+<div class="example-wrapper">
+{% if editMode %}
+    <h1 class="title">Modification de l'annonce</h1>   
+{% else %}
+    <h1 class="title">Création d'une annonce</h1>      
+{% endif %}
+
+{{ form_start(formRequest)}}
+{{ form_row(formRequest.title, {'label': 'Titre'}) }}
+{{ form_row(formRequest.description, {'label': 'Description'}) }}
+{{ form_row(formRequest.nbPoint, {'label': 'Nombre de points à donner'}) }}
+
+<button  type="submit" class="btn btn-success" style="margin:auto; display:block;">
+    {% if editMode %}
+        Enregistrer les modifications
+    {% else %}
+        Créer 
+    {% endif %}
+</button>
+
+{{ form_end(formRequest)}}
+
+
+</div>
+
+{% endblock %}
