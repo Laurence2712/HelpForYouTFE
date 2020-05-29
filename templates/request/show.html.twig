@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les demandes{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .demandeAssistance { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px;}
+    .demandeAssistance p{ color:#fff;}
+    .title { margin-top: 60px; background: #318ce7; border: 1px solid #318ce7; border-radius: 50px; padding: 20px; }
+    .title h1 { text-align:center; color:#fff; }
+    .btnPublier {margin-top: 30px; }
+    .container {margin-top: 50px; text-align:center; }
+</style>
+
+<div class="container  ">
+<h4>Merci d'avoir publié une annonce!</h4>
+<img src="{{ asset('images/satisfait.png') }}">
+<hr>
+<h5>Nous espérons que vous trouverez quelqu'un rapidement pour vous aidez!</h5>
+<br>
+<br>
+<br>
+<p>Retour vers <a href="{{ path('request') }}">les annonces</a></p>
+</div>
+
+
+<!--
+<div class="example-wrapper">
+<div class="container title">
+  <div class="row">
+    <div class="col">
+    <h1>DEMANDE D'ASSISTANCE</h1>
+  </div>
+</div>
+</div>
+
+<div class="container demandeAssistance">
+  <div class="row">
+    <div class="col">
+    <p>Catégorie: </p>
+    <p>Description:  </p>
+    <p>Nombre de points demandés: </p>
+  </div>
+</div>
+</div>
+<div class="container btnPublier">
+  <div class="row">
+    <div class="col">
+   <button type="button" class="btn btn-success">Publier</button>
+  </div>
+</div>-->
+{% endblock %} 

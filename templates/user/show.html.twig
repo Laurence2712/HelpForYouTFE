@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche d'un utilisateur{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .infosUser { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px;}
+    .infosUser p, .nbPointsUser p, .servicesCommentaires { color: #fff;}
+    .infosUser h1 { text-align:center; color:#fff; margin-bottom:60px;}
+    .infosUser img {border:1px solid #000; border-radius: 50%;}
+    .nbPointsUser{ margin-top: 60px; background: #318ce7; border: 1px solid ##318ce7; border-radius: 50px; text-align:center; padding: 20px; max-width:300px;}
+    .servicesCommentaires {  margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px; }
+    .about{ margin-top: 50px;}
+</style>
+
+<div class="example-wrapper">
+ 
+<div class="container infosUser">
+<h1>MON PROFIL</h1>
+  <div class="row"> 
+    <div class="col">
+      <img src="{{ asset('images/' ~ user.imageName) }}" alt="" width="200">
+   
+      
+    </div>
+    <div class="col">
+      <p> NOM: {{ user.lastname }}</p>
+      <p> PRENOM: {{ user.firstname }}</p>
+      
+      <p> ADRESSE: {{ user.address }} {{ user.postalCode }} {{ user.city }}</p>
+      <p> EMAIL: {{ user.email }}</p>
+      
+    </div>
+  </div>
+</div>
+<div class="container about">
+  <div class="row">
+    <div class="col">
+    <h3>A propos de moi:</h3>
+    <p>{{ user.description }}</p>
+    </div>
+  </div>
+</div>
+<div class="container nbPointsUser">
+  <div class="row">
+    <div class="col">
+    <p><span style="font-size:25px;">20</span>points</p>
+    </div>
+  </div>
+</div>
+
+<div style="display:block; text-align:center; margin-top:100px;">
+  <button type="button" class="btn btn-success"><a href="">Modifier</a></button>
+  <button type="button" class="btn btn-success">Sauvegarder</button>
+</div>
+<!--<div class="container ">
+  <div class="row">
+    <div class="col">
+    <p><a href="">Mes annonces:</a></p>
+    <p></p>
+    </div>
+  </div>
+</div>
+<div class="container servicesCommentaires">
+  <div class="row">
+    <div class="col">  
+      <p>Mes commentaires:</p>
+  </div>
+</div>
+
+</div>-->
+{% endblock %}
