@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Role;
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RoleRepository;
 use Doctrine\Common\Collections\Collection;
@@ -29,7 +29,7 @@ class Role
     private $role;
     
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="role", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="role")
      */
     private $users;
 
@@ -83,8 +83,7 @@ class Role
        }
        return $this;
     }
-    public function __toString()
-    {
-        return $this->role;
+    public function __toString() {
+        return 'ROLE_USER';//$this->roles;       //ROLE_USER 
     }
 }

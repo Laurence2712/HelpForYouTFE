@@ -30,10 +30,6 @@ class SecurityController extends AbstractController
       $user = new User();
 
         }
-
-        $role = new Role();
-        $role->setRole('membre');
-
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);      
@@ -44,10 +40,10 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
 
             $user->setPassword($hash);  
-            $user->setRole($role);
+          
      
             $manager->persist($user);
-            //$manager->persist($role);
+          
             
            // dd($user); die;
             $manager->flush();
@@ -69,7 +65,6 @@ class SecurityController extends AbstractController
      */
     public function login(User $user = null){
         
-//var_dump($user);die;
     if($user){
        
         return $this->redirectToRoute("prestation", ['id'=> $user->getId()]);

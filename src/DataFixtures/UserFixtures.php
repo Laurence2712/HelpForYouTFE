@@ -97,10 +97,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             //Assigner la référence du rôle correspondant
             $user->setRole($this->getReference($record['role']));
 
-            //$user->addRole($this->getReference($record['role']));
-
-            //$this->setReference($record['role'], $user);
-
             $user->setAddress($record['address']);
             $user->setPostalCode($record['postalCode']);
             $user->setCity($record['city']);

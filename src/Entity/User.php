@@ -107,17 +107,25 @@ class User implements UserInterface
     private $allComments;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $role;
+    //private $role;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
+     */
+    private $roles;
 
     public function __construct()
     {
         $this->requests = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->allComments = new ArrayCollection();
-        $this->setRole = array('membre');
+        //$this->setRole = array('membre');
+        //$this->roles = array("ROLE_MEMBER");
+       $this->roles = new ArrayCollection();
         
     }
 
@@ -258,13 +266,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function eraseCredentials(){
-
-    }
-
-    public function getSalt(){
-
-    }
+  
 
     /*public function getRoles(){
         return ['ROLE_USER'];
@@ -281,19 +283,30 @@ class User implements UserInterface
             $roles[] = $role->getRole();
         }
 
-        $roles[] = 'membre';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
-
-  
-   /* public function getUsername(){
-
-    }*/
-    public function getUsername(): string
+    public function addRole(Role $role): self
     {
-        return (string) $this->email;
+        if (!$this->roles->contains($role)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
     }
+
+    public function removeRole(Role $role): self
+    {
+        if ($this->roles->contains($role)) {
+            $this->roles->removeElement($role);
+        }
+
+        return $this;
+    }
+
+
+
     /**
      * @return Collection|Request[]
      */
@@ -387,48 +400,30 @@ class User implements UserInterface
         return $this;
     }
 
+     /**
+      * A visual identifier that represents this user.
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+     /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(){
 
-    public function getRole(): ?Role
+    }
+    /**
+     * @see UserInterface
+     */
+    public function getSalt(){
+
+    }
+    /*public function __toString()
     {
         return $this->role;
-    }
-
-    public function setRole(Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    public function addRole(Role $role): self
-    {
-        //dd($role);
-        if (!$this->roles->contains($role)) {
-             
-            $this->roles[] = $role;
-            $role->setRole($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRole(Role $role): self
-    {
-        if ($this->roles->contains($role)) {
-            $this->roles->removeElement($role);
-            // set the owning side to null (unless already changed)
-            if ($role->getRole() === $this) {
-                $role->setRole(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->role;
-    }
+    }*/
 
    
 
