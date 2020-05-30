@@ -116,7 +116,7 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
      */
-    private $roles;
+    private $role;
 
     public function __construct()
     {
@@ -124,8 +124,8 @@ class User implements UserInterface
         $this->comments = new ArrayCollection();
         $this->allComments = new ArrayCollection();
         //$this->setRole = array('membre');
-        //$this->roles = array("ROLE_MEMBER");
-       $this->roles = new ArrayCollection();
+        //$this->role = array("ROLE_USER");
+        $this->role = new ArrayCollection();
         
     }
 
@@ -266,7 +266,18 @@ class User implements UserInterface
         return $this;
     }
 
-  
+    public function getRole(): ?Role
+    {
+        return $this->roles;
+    }
+
+    public function setRole(Role $role): self
+    {
+        $this->roles = $role;
+
+        return $this;
+    }
+    
 
     /*public function getRoles(){
         return ['ROLE_USER'];
@@ -400,26 +411,30 @@ class User implements UserInterface
         return $this;
     }
 
-     /**
-      * A visual identifier that represents this user.
-     * @see UserInterface
-     */
+
+
+    /* public function getUsername(){
+
+    }*/
     public function getUsername(): string
     {
         return (string) $this->email;
     }
-     /**
+    /**
      * @see UserInterface
      */
-    public function eraseCredentials(){
+    public function eraseCredentials()
+    {
 
     }
     /**
      * @see UserInterface
      */
-    public function getSalt(){
+    public function getSalt()
+    {
 
     }
+    
     /*public function __toString()
     {
         return $this->role;

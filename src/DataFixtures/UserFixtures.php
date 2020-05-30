@@ -13,7 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 
-
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
@@ -32,7 +31,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
              'image_size' => 2,
              'updated_at' => new \DateTime('2019-01-02'),
              'description' => 'Généralement, j\'ai du temps à consacrer aux gens. 
-             Je suis poli, serviable et une personne de confiance',
+              Je suis poli, serviable et une personne de confiance',
             ],
             [
              'firstname' => 'Géraldine',
@@ -107,21 +106,14 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setUpdatedAt($record['updated_at']);
             $user->setDescription($record['description']);
 
-            //dd($user);
             $manager->persist($user);
-
         }
-
         $manager->flush();
     }
     public function getDependencies(){
         return [
           
-            RoleFixtures::class,
-       
-      
+            RoleFixtures::class,     
         ];
-    }
-  
-   
+    } 
 }

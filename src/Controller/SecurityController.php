@@ -27,9 +27,12 @@ class SecurityController extends AbstractController
     public function registration(User $user = null, Request $request = null, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         if(!$user){
-      $user = new User();
+            $user = new User();
 
         }
+
+        //$role = new Role();
+        //$user->setRole('ROLE_USER');
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);      
@@ -38,8 +41,9 @@ class SecurityController extends AbstractController
 
            
             $hash = $encoder->encodePassword($user, $user->getPassword());
-
+            
             $user->setPassword($hash);  
+            //$user->setRole($role);
           
      
             $manager->persist($user);
