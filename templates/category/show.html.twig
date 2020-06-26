@@ -6,27 +6,119 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .block{margin-top:50px;}
+    .text{margin-top:30px;}
+    .bntCat{margin-top: 30px; margin:auto; display:block;}
+    .btnCat a{text-decoration:none; }
+    .btnCat a:hover{text-decoration:none;color:#fff; }
+
+   
+    
 </style>
 
 <div class="example-wrapper">
-    <h1>Catégorie ASSISTANCE</h1>
 
-
-
+<!--
 {% if category.name == 'assistance' %}
+
+ <img src="{{ asset('images/assistance.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 600px;">
+
 <div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;">
     <div class="row">
         <div class="col">
-            <img src="{{ asset('images/logo.png') }}" style="border:1px solid #048b9a; border-radius:30%;">
+            <img src=>
+            <p>Nom:</p>
+            <p>Prenom:</p>
+            <p>Email:</p>
+            <p>Ville:</p>
+            <p>Code postal:</p>
+        </div>
+        <div class="col">        
+                <p style="font-weight: bold; text-transform: uppercase; font-size:20px;">{{ category.name }}</p>
+           
+        </div>
+    </div>
+     <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;" ><a href="{{ path('request_create')}}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+    </div>
+</div>
+{% elseif category.name == 'animaux' %}
+
+ <img src="{{ asset('images/animaux.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 500px;">
+
+
+<div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;">
+    <div class="row">
+        <div class="col">
+           
             <p>Nom:</p>
             <p>Prenom:</p>
             <p>Localisation:</p>
         </div>
         <div class="col">        
                 <p style="font-weight: bold; text-transform: uppercase; font-size:20px;">{{ category.name }}</p>
-                <p style="font-weight: bold; font-size:16px;">{{ request.title }}</p>
-                <p style="font-size:14px;">{{ request.description }}</p>
-                <p style="font-size:14px;">Nombre de points demandé: {{ request.nbPoint }}</p>   
+           
+        </div>
+    </div>
+     <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;" ><a href="{{ path('request_create')}}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+    </div>
+</div>
+{% elseif category.name == 'enfance' %}
+
+ <img src="{{ asset('images/enfance.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 600px;">
+
+
+<div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;">
+    <div class="row">
+        <div class="col">
+          
+            <p>Nom:</p>
+            <p>Prenom:</p>
+            <p>Localisation:</p>
+        </div>
+        <div class="col">        
+                <p style="font-weight: bold; text-transform: uppercase; font-size:20px;">{{ category.name }}</p>
+           
+        </div>
+    </div>
+     <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;" ><a href="{{ path('request_create')}}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+    </div>
+</div>
+{% elseif category.name == 'transport' %}
+
+ <img src="{{ asset('images/transport.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 600px;">
+
+
+<div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;">
+    <div class="row">
+        <div class="col">
+       
+            <p>Nom:</p>
+            <p>Prenom:</p>
+            <p>Localisation:</p>
+        </div>
+        <div class="col">        
+                <p style="font-weight: bold; text-transform: uppercase; font-size:20px;">{{ category.name }}</p>
+           
+        </div>
+    </div>
+     <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;" ><a href="{{ path('request_create')}}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+    </div>
+</div>
+{% elseif category.name == 'jardinage' %}
+
+ <img src="{{ asset('images/jardinage.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px; max-width: 600px;">
+
+
+<div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;">
+    <div class="row">
+        <div class="col">
+           
+            <p>Nom:</p>
+            <p>Prenom:</p>
+            <p>Localisation:</p>
+        </div>
+        <div class="col">        
+                <p style="font-weight: bold; text-transform: uppercase; font-size:20px;">{{ category.name }}</p>
            
         </div>
     </div>
@@ -34,10 +126,86 @@
     </div>
 </div>
  {% endif %}
+--> 
+
+
+<div class="container-fluid">
+    <div class="row block">
+        
+             {% if category.name == 'assistance' %}
+            <img src="{{ asset('images/assistance.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 300px;">
+            {% elseif category.name == 'animaux' %}
+            <img src="{{ asset('images/animaux.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 300px;">
+            {% elseif category.name == 'enfance' %}
+            <img src="{{ asset('images/enfance.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 300px;">
+            {% elseif category.name == 'transport' %}
+            <img src="{{ asset('images/transport.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 300px;">
+            {% elseif category.name == 'jardinage' %}
+            <img src="{{ asset('images/jardinage.jpg') }}" style="border-radius:10%; display:block; margin:auto; margin-top:30px; margin-bottom:30px;  max-width: 300px;">
+            {% endif %}
+    
+        
+            {% if category.name == 'assistance' %}
+            
+            <p>Nous avons tous, un jour ou l'autre, besoin d'aide. Dans cette catégorie, vous retrouverez toutes les demandes 
+            concernant les différentes {{ category.name}}s: 
+            <ul>
+                <li>Aide ménagère</li>
+                <li>Faire les courses</li>
+                <li>Tenir compagnie à une personne</li>
+                <li>Préparer à manger</li>
+                <li>etc.</li>
+
+            </ul>
+            Aider les autres part parfois de petites choses. Les personnes seules, âgées ou encore juste dans le besoin,
+             seront ravie de trouver de l'aide auprès de vous!
+            </p>
+            {% elseif category.name == 'animaux' %} 
+            <p>Nos animaux, on les aime comme nos enfants. Ils font partie de notre quotidien et de notre vie.
+            Dans cette catégorie, seront regroupées les annonces concernant les {{ category.name}}: 
+            <ul>
+                <li>Prendre l'air</li>
+                <li>Nourrir</li>
+                <li>Dresser</li>
+                <li>Emmener chez le vétérinaire</li>
+                <li>etc.</li>
+
+            </ul>
+            Les demandes que vous ferez sont principalements ciblées sur vos animaux de compagnie.
+            </p>
+            {% elseif category.name == 'enfance' %}
+            <p>Nous aimons parfois nous retrouver en tête-à-tête entre parents, sans les enfants. Cette catégorie regroupe: 
+            <ul>
+                <li>Babysitting</li>
+                <li>Récupérer à la sortie de l'école</li>
+                <li>Amener à l'école</li>
+                <li>Garderie après école</li>
+                <li>etc.</li>
+            </ul>
+            C'est donc à vous, qui voulez de l'aide, d'écrire une annonce précise quant à la demande.
+            En choississant cette catégorie, la demande sera classée par rapport aux enfants.
+            </p>
+            {% elseif category.name == 'transport' %}          
+            <p>Cette catégorie comprend les aides demandées concernant les transports</p>
+            {% elseif category.name == 'jardinage' %}
+            <p>Cette catégorie comprend les aides demandées concernant les jardinage</p>
+            {% endif %}
+        <div class="btnCat">
+            <button class="btn btn-outline-primary"><a href="http://localhost:8000/category/">Retour vers les catégories</a></button>
+       
+        </div>
+   </div>
+</div>
+
+
+
+
+</div>
 
 
 
 
 
 </div>
+
 {% endblock %}

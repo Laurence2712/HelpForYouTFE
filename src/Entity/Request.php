@@ -31,7 +31,7 @@ class Request
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=10, max=255, minMessage="Votre titre doit contenir minimum 10 caractères")
+     * @Assert\Length(min=10, max=500, minMessage="Votre titre doit contenir minimum 10 caractères")
      */
     private $description;
 
@@ -60,6 +60,13 @@ class Request
      * @ORM\Column(type="string", length=60)
      */
     private $firstname;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $postalCode;
+
+
 
    
 
@@ -156,6 +163,19 @@ class Request
 
         return $this;
     }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?int $postalCode): self
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
 
     
 

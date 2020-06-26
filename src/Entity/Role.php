@@ -29,13 +29,14 @@ class Role
     private $role;
     
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="role")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="role")
      */
     private $users;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
@@ -50,6 +51,7 @@ class Role
 
     public function setRole( string $role): self
     {
+    
         $this->role = $role;
 
         return $this;
@@ -83,8 +85,8 @@ class Role
        }
        return $this;
     }
-    /*
-    public function __toString() {
+    
+   /* public function __toString() {
         return 'ROLE_USER';//$this->roles;       //ROLE_USER 
     }*/
 }

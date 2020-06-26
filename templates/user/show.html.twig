@@ -10,7 +10,7 @@
     .infosUser p, .nbPointsUser p, .servicesCommentaires { color: #fff;}
     .infosUser h1 { text-align:center; color:#fff; margin-bottom:60px;}
     .infosUser img {border:1px solid #000; border-radius: 50%;}
-    .nbPointsUser{ margin-top: 60px; background: #318ce7; border: 1px solid ##318ce7; border-radius: 50px; text-align:center; padding: 20px; max-width:300px;}
+    .nbPointsUser{ margin-top: 60px; background: #318ce7; border: 1px solid ##318ce7; border-radius: 50px; text-align:center; padding: 20px; max-width:300px; height:auto;}
     .servicesCommentaires {  margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px; }
     .about{ margin-top: 50px;}
 </style>
@@ -21,16 +21,17 @@
 <h1>MON PROFIL</h1>
   <div class="row"> 
     <div class="col">
-      <img src="{{ asset('images/' ~ user.imageName) }}" alt="" width="200">
+      <img src="{{ asset('images/' ~ app.user.imageName) }}" alt="" width="200">
    
       
     </div>
     <div class="col">
-      <p> NOM: {{ user.lastname }}</p>
-      <p> PRENOM: {{ user.firstname }}</p>
+      <p> NOM: {{ app.user.lastname }}</p>
+   
+      <p> PRENOM: {{ app.user.firstname }}</p>
       
-      <p> ADRESSE: {{ user.address }} {{ user.postalCode }} {{ user.city }}</p>
-      <p> EMAIL: {{ user.email }}</p>
+      <p> ADRESSE: {{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
+      <p> EMAIL: {{ app.user.email }}</p>
       
     </div>
   </div>
@@ -39,21 +40,23 @@
   <div class="row">
     <div class="col">
     <h3>A propos de moi:</h3>
-    <p>{{ user.description }}</p>
+    <p>{{ app.user.description }}</p>
     </div>
   </div>
 </div>
-<div class="container nbPointsUser">
+<div class="container" style="margin-top:30px;">
   <div class="row">
     <div class="col">
-    <p><span style="font-size:25px;">20</span>points</p>
+    <h3>Nombre de points:</h3>
+    <p><span style="font-size:25px;">20</span> points</p>
     </div>
   </div>
 </div>
 
-<div style="display:block; text-align:center; margin-top:100px;">
-  <button type="button" class="btn btn-success"><a href="">Modifier</a></button>
-  <button type="button" class="btn btn-success">Sauvegarder</button>
+
+<div style="margin-top:50px; text-align:center; border: 1px solid #005c96; max-width:150px; border-radius: 30px;">
+<a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier le profil</a>
+
 </div>
 <!--<div class="container ">
   <div class="row">

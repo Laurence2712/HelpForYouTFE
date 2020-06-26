@@ -14,12 +14,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
-
-
-
-
 class SecurityController extends AbstractController
 {
+
+    
+
     /**
      * @Route("/inscription", name="security_registration")
      * @Route("/inscription/{id}/edit", name="profil_edit")
@@ -31,28 +30,36 @@ class SecurityController extends AbstractController
 
         }
 
-        //$role = new Role();
-        //$user->setRole('ROLE_USER');
+        $defaultRole = $this->getDoctrine()
+            ->getRepository(Role::class)
+            ->findOneBy(['role' => 'membre']);
+    
         $form = $this->createForm(RegistrationType::class, $user);
 
-        $form->handleRequest($request);      
+        $form->handleRequest($request);  
+           
 
         if($form->isSubmitted() && $form->isValid()){
-
+            if(!$user->getId()){
+                $user->setUpdatedAt(new \DateTime());
+                $user->setImageName('logo.png');
+                $user->setImageSize(2);
+                $user->setDescription('Pas encore de description');
+                        
+            }
            
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            
+                     
+            $hash = $encoder->encodePassword($user, $user->getPassword()); 
             $user->setPassword($hash);  
-            //$user->setRole($role);
-          
+
+            $user->addRole($defaultRole);
      
             $manager->persist($user);
-          
-            
-           // dd($user); die;
+                  
+   
             $manager->flush();
 
-            return $this->redirectToRoute("user_show", ['id'=> $user->getId()]);
+            return $this->redirectToRoute("security_login", ['id'=> $user->getId()]);
            
         }
 
@@ -70,7 +77,8 @@ class SecurityController extends AbstractController
     public function login(User $user = null){
         
     if($user){
-       
+     
+
         return $this->redirectToRoute("prestation", ['id'=> $user->getId()]);
 
     }

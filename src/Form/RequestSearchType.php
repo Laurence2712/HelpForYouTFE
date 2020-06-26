@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class RequestSearchType extends AbstractType
@@ -19,10 +20,15 @@ class RequestSearchType extends AbstractType
                 'label' => false, 
                 'attr' => ['placeholder' => 'Code postal']
             ])
-            /*->add('city', TextType::class, [
-                'required' =>false,
-                'label' => false, 
-                'attr' => ['placeholder' => 'Ville']
+           /* ->add('category', ChoiceType::class, [
+                'choices'=>[
+                    '' => null,
+                    'Assistance' => 'Assistance',
+                    'Animaux' => 'Animaux',
+                    'Enfance' => 'Enfance',
+                    'Transport' => 'Transport',
+                    'Jardinage' => 'Jardinage',
+                ]
             ])*/
         ;
     }

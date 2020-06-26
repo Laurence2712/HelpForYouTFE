@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 
-class UserFixtures extends Fixture implements DependentFixtureInterface
+class UserFixtures extends Fixture 
 {
     public function load(ObjectManager $manager)
     {
@@ -21,7 +21,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             [
              'firstname' => 'Daniel',
              'lastname' => 'Marcelin',
-             'role'=>'admin',
              'address' => 'Rue de la fontaine bleue 45',
              'postalCode' => '5340',
              'city' => 'Haltinne',
@@ -36,7 +35,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             [
              'firstname' => 'Géraldine',
              'lastname' => 'Philippe',
-             'role'=>'admin',
              'address' => 'Rue du bois 30',
              'postalCode' => '5020',
              'city' => 'Vedrin',
@@ -51,7 +49,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
        
              'firstname' => 'Marius',
              'lastname' => 'Von Mayenburg',
-             'role'=>'membre',
              'address' => 'Rue de la cité 60',
              'postalCode' => '5000',
              'city' => 'Namur',
@@ -66,7 +63,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 
             'firstname' => 'Laurence',
             'lastname' => 'Pirard',
-            'role'=>'admin',
             'address' => 'Rue de la joie 360',
             'postalCode' => '1410',
             'city' => 'Waterloo',
@@ -79,6 +75,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
            ],
         ];
 
+        
         foreach($users as $record){
 
             $user = new User();
@@ -86,15 +83,15 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $comment = new Comment();
             
 
-            $this->addReference($record['lastname'], $user);
-            $this->addReference($record['firstname'].'-'.$record['lastname'], $user);
-            $this->addReference($record['firstname'], $user);
+        
 
             $user->setFirstname($record['firstname']);
             $user->setLastname($record['lastname']);
 
-            //Assigner la référence du rôle correspondant
-            $user->setRole($this->getReference($record['role']));
+      
+            //$this->addReference($record['role'], $user);
+           
+            //$user->setRole($record['role']);
 
             $user->setAddress($record['address']);
             $user->setPostalCode($record['postalCode']);
@@ -106,14 +103,25 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setUpdatedAt($record['updated_at']);
             $user->setDescription($record['description']);
 
+          
+            //dd($user);die;
+            $this->addReference($record['lastname'], $user);
+            $this->addReference($record['firstname'].'-'.$record['lastname'], $user);
+            $this->addReference($record['firstname'], $user);
+            
+            $this->addReference($record['email'], $user);
+
             $manager->persist($user);
+
         }
+        
         $manager->flush();
+        
     }
-    public function getDependencies(){
+    /*public function getDependencies(){
         return [
           
             RoleFixtures::class,     
         ];
-    } 
+    } */
 }

@@ -29,7 +29,7 @@ class CommentController extends AbstractController
         $comments = $repository->findAll();
 
 
-
+        
 
 
         return $this->render('comment/index.html.twig', [
@@ -39,6 +39,7 @@ class CommentController extends AbstractController
         ]);
     }
     
+
 
     /**
      * @Route("/comment/{id}", name="comment_show")

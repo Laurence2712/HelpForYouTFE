@@ -8,7 +8,7 @@ class RequestSearch{
 
     /**
      * @var int|null
-     * @Assert\Range(min=1300, max=1495, minMessage="Le code postal doit se situer entre 1300 et 1495")
+     * @Assert\Range(min=1300, max=6000, minMessage="Le code postal doit se situer entre 1300 et 6000")
      * @Assert\Regex("/^[0-9]{4}$/")
      */
 
@@ -20,6 +20,10 @@ class RequestSearch{
      */
     private $city;
 
+    /**
+     * @var string|null
+     */
+    private $category;
 
     /**
      * @param int|null $postalCode
@@ -59,6 +63,24 @@ class RequestSearch{
         return $this;
     }
 
+     /**
+     * @param string|null $category
+     * @return RequestSearch
+     */
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string|null $category
+     * @return RequestSearch
+     */
+    public function setCategory(?int $category): RequestSearch
+    {
+        $this->category = $category;
+        return $this;
+    }
 
 
 

@@ -24,6 +24,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 3,
                 'created_at' => new \DateTime('2020-03-02 13:21:21'),   
                 'name' => 'assistance',
+                'postalCode' => 5000,
+  
              
             ],
             [
@@ -33,6 +35,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 2, 
                 'created_at' => new \DateTime('2019-06-02 13:21:21'), 
                 'name' => 'animaux',
+                'postalCode' => 1410,
+ 
           
             ],
             [
@@ -42,6 +46,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 4,
                 'created_at' => new \DateTime('2020-02-02 13:21:21'), 
                 'name' => 'jardinage',
+                'postalCode' => 1410,
+        
              
             ],
             [
@@ -51,6 +57,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 2, 
                 'created_at' => new \DateTime('2020-01-02 16:21:21'), 
                 'name' => 'transport',
+                'postalCode' => 5020,
+         
            
             ],
             [
@@ -60,6 +68,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 1, 
                 'created_at' => new \DateTime('2020-01-02 10:21:21'),
                 'name' => 'enfance', 
+                'postalCode' => 5340,
+          
                          
             ],
             [
@@ -69,6 +79,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 1, 
                 'created_at' => new \DateTime('2020-01-02 13:21:21'), 
                 'name' => 'jardinage',
+                'postalCode' => 1410,
+   
              
             ],
             [
@@ -78,6 +90,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 2, 
                 'created_at' => new \DateTime('2020-05-02 13:21:21'),
                 'name' => 'enfance', 
+                'postalCode' => 5340,
+      
            
             ],
             [
@@ -87,7 +101,8 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 1,
                 'created_at' => new \DateTime('2020-04-02 13:21:21'), 
                 'name' => 'jardinage',
-          
+                'postalCode' => 5020,
+  
             ],
             [
                 'firstname' => 'Daniel',
@@ -96,7 +111,17 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
                 'nbPoint' => 5, 
                 'created_at' => new \DateTime('2020-03-02 13:21:21'), 
                 'name' => 'transport',
+                'postalCode' => 5340,
 
+            ],
+            [
+                'firstname' => 'Daniel',
+                'title' => 'test',
+                'description' => 'Pour cause de déménagement, je suis à la recherche d\'une camionnette pendant 3 jours',
+                'nbPoint' => 5, 
+                'created_at' => new \DateTime('2020-03-02 13:21:21'), 
+                'name' => 'jardinage',
+                'postalCode' => 5340,
      
             ],
         ];
@@ -108,15 +133,19 @@ class RequestFixtures extends Fixture implements DependentFixtureInterface
             $request->setTitle($record['title']);
             $request->setDescription($record['description']);
             $request->setNbPoint($record['nbPoint']);   
-            $request->setCreatedAt($record['created_at']);  
-            
+            $request->setCreatedAt($record['created_at']); 
+            $request->setPostalCode($record['postalCode']); 
+           // $request->setRequester(app.user); 
+            //Référence avec la table category
             $refCat = $this->getReference($record['name']);
             //dd($refCat);
+            //Référence avec la table User
             $refUser = $this->getReference($record['firstname']);
-       
+      
            
             $request->setCategory($refCat);
             $request->setRequester($refUser);
+      
 
             $manager->persist($request);
                 

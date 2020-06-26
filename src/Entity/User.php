@@ -106,17 +106,12 @@ class User implements UserInterface
      */
     private $allComments;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    //private $role;
-
+   
 
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Role::class, inversedBy="users")
      */
-    private $role;
+    private $roles;
 
     public function __construct()
     {
@@ -125,8 +120,8 @@ class User implements UserInterface
         $this->allComments = new ArrayCollection();
         //$this->setRole = array('membre');
         //$this->role = array("ROLE_USER");
-        $this->role = new ArrayCollection();
-        
+        $this->roles = new ArrayCollection();
+        //dd($this->role );die;
     }
 
     public function getId(): ?int
@@ -265,19 +260,18 @@ class User implements UserInterface
 
         return $this;
     }
-
+/*
     public function getRole(): ?Role
     {
-        return $this->roles;
+        return $this->role;
     }
 
     public function setRole(Role $role): self
     {
-        $this->roles = $role;
-
+        $this->role = $role;
         return $this;
     }
-    
+  */  
 
     /*public function getRoles(){
         return ['ROLE_USER'];
@@ -435,10 +429,11 @@ class User implements UserInterface
 
     }
     
-    /*public function __toString()
+   
+    public function __toString() 
     {
-        return $this->role;
-    }*/
+        return (string) $this->firstname; 
+    }
 
    
 

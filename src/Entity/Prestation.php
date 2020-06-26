@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\PrestationRepository;
+use Webmozart\Assert\Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PrestationRepository;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @ORM\Entity(repositoryClass=PrestationRepository::class)
@@ -25,6 +27,7 @@ class Prestation
 
     /**
      * @ORM\Column(type="text")
+     * 
      */
     private $description;
 

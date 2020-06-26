@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200527080316 extends AbstractMigration
+final class Version20200626100131 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20200527080316 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE requests ADD requester_id INT DEFAULT NULL, ADD firstname VARCHAR(60) NOT NULL');
-        $this->addSql('ALTER TABLE requests ADD CONSTRAINT FK_7B85D651ED442CF4 FOREIGN KEY (requester_id) REFERENCES users (id)');
-        $this->addSql('CREATE INDEX IDX_7B85D651ED442CF4 ON requests (requester_id)');
+        $this->addSql('ALTER TABLE requests ADD postal_code INT NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20200527080316 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE requests DROP FOREIGN KEY FK_7B85D651ED442CF4');
-        $this->addSql('DROP INDEX IDX_7B85D651ED442CF4 ON requests');
-        $this->addSql('ALTER TABLE requests DROP requester_id, DROP firstname');
+        $this->addSql('ALTER TABLE requests DROP postal_code');
     }
 }

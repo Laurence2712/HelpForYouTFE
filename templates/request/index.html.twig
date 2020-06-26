@@ -10,6 +10,8 @@
     .containerService{ margin-bottom: 25px;}
     .btnService{ }
     .navigation{ margin:auto; display:table;}
+    .textSearch p{width:800px; margin-bottom:50px;}
+    .form-group{text-align:center;}
 </style>
 
 <div class="example-wrapper">
@@ -40,17 +42,13 @@
 -->
 
 
-
 <div class="jumbotron">
     <div class="container">
         {{ form_start(form) }}
         <div class="form-row align-items-end">
-            <div class="col">
-                {{ form_row(form.postalCode)}}
+            <div class="col textSearch">
+                <p>Veuillez entrer le code postal le plus proche de chez vous pour filtrer les annonces:</p>{{ form_row(form.postalCode)}}
             </div>
-             <!--<div class="col">
-                city
-            </div>-->
             <div class="col">
             <div class="form-group">
                 <button class="btn btn-primary">Rechercher</button>
@@ -61,7 +59,7 @@
     </div>
 </div>
 
-
+<div class="col">
 {% for request in annonces %}
 <div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px; padding:20px;">
 
@@ -74,7 +72,9 @@
             
             <p style="font-weight: bold; font-size:16px;">Nom: <span style="font-size:14px; font-weight: normal;">{{ request.requester.lastname }}</span></p>
             <p style="font-weight: bold; font-size:16px;">Prenom: <span style="font-size:14px; font-weight: normal;"> {{ request.requester.firstname }}</span></p>
+            <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
             <p style="font-weight: bold; font-size:16px;">Ville: <span style="font-size:14px; font-weight: normal;">{{ request.requester.city }}</span></p>
+             <p style="font-weight: bold; font-size:16px;">Code postal: <span style="font-size:14px; font-weight: normal;">{{ request.requester.postalCode }}</span></p>
             
         </div>
         <div class="col" style="margin-top:80px;">        
@@ -91,6 +91,52 @@
 </div>
 
  {% endfor %}
+ </div>
+
+
+<!--
+<div class="container">
+  <table class="table table-striped table-bordered" style="width:100%"  id="myTable">
+      <thead>
+        <tr>
+          <th class="titleTab">Nom</th>
+          <th class="titleTab">Prénom</th>
+          <th class="titleTab">Ville</th>
+          <th class="titleTab">Code postal</th>
+          <th class="titleTab">Catégorie</th>
+          <th class="titleTab">Date de publication</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for request in annonces %}
+          <tr>
+            <td>{{ request.requester.lastname }}</td>
+              {% if request.requester.firstname  %}
+
+            <td>{{ request.requester.firstname  }}</td>
+            {% else %}
+            <td>/</td>
+              {% endif %}
+            <td>{{ request.requester.city }}</td>
+            <td>{{ request.requester.postalCode }}</td>
+            <td>{{ request.category.name }}</td>
+          <td><datetime>{{ request.createdAt |date('Y-m-d') }}</datetime></td>
+        </tr>
+          {% endfor %}
+        </tbody>
+            <tfoot>
+              <tr>
+                <th class="titleTab">Nom</th>
+                <th class="titleTab">Prénom</th>
+                <th class="titleTab">Ville</th>
+                <th class="titleTab">Code postal</th>
+                <th class="titleTab">Catégorie</th>
+                <th class="titleTab">Date de publication</th>
+              </tr>
+            </tfoot>
+    </table>
+</div>
+-->
 
 <div class="navigation">
 {{ knp_pagination_render(annonces) }}

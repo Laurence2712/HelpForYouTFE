@@ -22,9 +22,15 @@
 {% endif %}
 
 {{ form_start(formRequest)}}
+{{ form_row(formRequest.firstname, {'label': 'Prénom', 'attr':{'value':app.user.firstname}}) }}
 {{ form_row(formRequest.title, {'label': 'Titre'}) }}
 {{ form_row(formRequest.description, {'label': 'Description'}) }}
 {{ form_row(formRequest.nbPoint, {'label': 'Nombre de points à donner'}) }}
+{{ form_row(formRequest.category, {'label': 'Catégorie'}) }}
+
+
+
+
 
 <button  type="submit" class="btn btn-success" style="margin:auto; display:block;">
     {% if editMode %}

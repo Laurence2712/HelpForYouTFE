@@ -20,10 +20,10 @@
 <h2 class="banniere">LES {{ resource }}</h2>
 <div class="container containerCat">
 
- <div class="row">
+ <div class="row justify-content-center">
   {% for category in categories %}
-    <div class="col categories">
-    <a href="" class="categoryName">{{ category.name }}</a>
+    <div class="col-3 categories">
+    <a href="{{ path('category_show', {'id': category.id}) }}" class="categoryName">{{ category.name }}</a>
     <img src="{{ asset('images/' ~ category.image) }}" width="200" class="img-thumbnail" >
     </div>
    {% endfor %}

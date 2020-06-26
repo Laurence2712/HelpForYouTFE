@@ -6,22 +6,25 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .tableau {margin-top: 100px;}
-    .title{  color:#fff; text-align:center; margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px;  } 
+    .tableau {margin-top: 150px;}
+    .title{  margin-bottom:60px; color:#fff; text-align:center; margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px;  } 
+
+
 </style>
 
 <div class="example-wrapper">
     <h2 class="title">Liste des utilisateurs</h2>
 
-<table class="table tableau">
+<table class="table tableau" id="myTable">
   <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">Email</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Code postal</th>
       <th scope="col">A propos</th>
+      <th scope="col">Commentaires</th>
     </tr>
   </thead>
   <tbody>
@@ -30,11 +33,20 @@
       <th scope="row"></th>
       <td>{{ user.lastname }}</td>
       <td>{{ user.firstname }}</td>
-      <td>{{ user.address }} {{ user.postalCode }} {{ user.city }}</td>
-      <td>{{ user.email }}</td> 
+      <td>{{ user.city }}</td>
+      <td>{{ user.postalCode }}</td>
+
       <td>{{ user.description }}</td> 
+   
+      <td><a href="{{ path('comment_show', {'id': user.id})}}">Voir</a></td>
+     
     </tr>
+ 
+
+
     {% endfor %}
+
+
   </tbody>
 </table>
 

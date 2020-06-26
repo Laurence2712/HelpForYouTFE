@@ -4,31 +4,33 @@ namespace App\DataFixtures;
 
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 
 
-class UserRoleFixtures extends Fixture 
+class UserRoleFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-      /*  $userRoles = [
-            ['firstname' => 'Laurence', 'lastname' => 'Pirard',  'role' => 'admin'],
-            /*['firstname' => 'Marius', 'lastname' => 'Von Mayenburg', 'role' => 'membre'],
-            ['firstname' => 'Géraldine',  'lastname' => 'Philippe' ,'role' => 'admin'],
-            ['firstname' => 'Daniel',  'lastname' => 'Marcelin' ,'role' => 'admin'],
+       $userRoles = [
+            ['email' => 'laurence@gmail.com', 'role' => 'admin'],
+            ['email' => 'marius@gmail.com', 'role' => 'admin'],
+            ['email' => 'geraldine@gmail.com','role' => 'admin'],
+            ['email' => 'danielMarcelin@gmail.com','role' => 'membre'],
 
         ];
 
         foreach($userRoles as $record){
             
-            $user = $this->getReference($record['firstname'].'-'.$record['lastname']);
+            $user = $this->getReference($record['email']);
             
             $role = $this->getReference($record['role']);
             
             
-
+            
+            //dd($role);
             $user->addRole($role);
-           //dd($user);
+           // dd($user);
             $manager->persist($user);
         }
 
@@ -39,6 +41,6 @@ class UserRoleFixtures extends Fixture
         return [
             UserFixtures::class,
             RoleFixtures::class,
-        ];*/
+        ];
     }
 }
