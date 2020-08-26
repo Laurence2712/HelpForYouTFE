@@ -6,7 +6,10 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cocur/slugify": "^4.0",
+<<<<<<< HEAD
         "easycorp/easyadmin-bundle": "^3.1",
+=======
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
         "knplabs/knp-paginator-bundle": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "5.0.*",
@@ -31,8 +34,12 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
+<<<<<<< HEAD
         "symfony/yaml": "5.0.*",
         "vich/uploader-bundle": "^1.15"
+=======
+        "symfony/yaml": "5.0.*"
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",

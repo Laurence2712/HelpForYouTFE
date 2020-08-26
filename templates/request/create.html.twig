@@ -11,14 +11,19 @@
     .banniere { margin-top: 60px; background: #048b9a; border: 1px solid #048b9a; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
     .containerService{ margin-bottom: 25px;}
     .btnService{ }
+<<<<<<< HEAD
     .title { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 15px; padding: 20px; color:#fff; text-align:center; margin-bottom:60px;}
     *{font-family: 'Lato';}
+=======
+    .title { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
 </style>
 
 <div class="example-wrapper">
 {% if editMode %}
     <h1 class="title">Modification de l'annonce</h1>   
 {% else %}
+<<<<<<< HEAD
     <h1 class="title">Créez votre annonce</h1>      
 {% endif %}
 
@@ -32,6 +37,15 @@
 
 
 
+=======
+    <h1 class="title">Création d'une annonce</h1>      
+{% endif %}
+
+{{ form_start(formRequest)}}
+{{ form_row(formRequest.title, {'label': 'Titre'}) }}
+{{ form_row(formRequest.description, {'label': 'Description'}) }}
+{{ form_row(formRequest.nbPoint, {'label': 'Nombre de points à donner'}) }}
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
 
 <button  type="submit" class="btn btn-success" style="margin:auto; display:block;">
     {% if editMode %}

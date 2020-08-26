@@ -11,7 +11,10 @@
     .img-thumbnail{ margin-top: 50px; border:none;}
     .categoryName{ text-transform: uppercase; color:#048b9a; margin-top: 50px;}
     .containerCat{ margin-top:100px; margin-bottom:80px; }
+<<<<<<< HEAD
     *{font-family: 'Nunito';}
+=======
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
    
     
 </style>
@@ -21,10 +24,17 @@
 <h2 class="banniere">LES {{ resource }}</h2>
 <div class="container containerCat">
 
+<<<<<<< HEAD
  <div class="row justify-content-center">
   {% for category in categories %}
     <div class="col-3 categories">
     <a href="{{ path('category_show', {'id': category.id}) }}" class="categoryName">{{ category.name }}</a>
+=======
+ <div class="row">
+  {% for category in categories %}
+    <div class="col categories">
+    <a href="" class="categoryName">{{ category.name }}</a>
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     <img src="{{ asset('images/' ~ category.image) }}" width="200" class="img-thumbnail" >
     </div>
    {% endfor %}

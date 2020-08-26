@@ -7,7 +7,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+=======
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class RequestSearchType extends AbstractType
@@ -20,6 +23,7 @@ class RequestSearchType extends AbstractType
                 'label' => false, 
                 'attr' => ['placeholder' => 'Code postal']
             ])
+<<<<<<< HEAD
            /* ->add('category', ChoiceType::class, [
                 'choices'=>[
                     '' => null,
@@ -29,6 +33,12 @@ class RequestSearchType extends AbstractType
                     'Transport' => 'Transport',
                     'Jardinage' => 'Jardinage',
                 ]
+=======
+            /*->add('city', TextType::class, [
+                'required' =>false,
+                'label' => false, 
+                'attr' => ['placeholder' => 'Ville']
+>>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             ])*/
         ;
     }
