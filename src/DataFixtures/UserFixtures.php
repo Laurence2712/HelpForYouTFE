@@ -13,12 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 
-<<<<<<< HEAD
 class UserFixtures extends Fixture 
-=======
-
-class UserFixtures extends Fixture implements DependentFixtureInterface
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
 {
     public function load(ObjectManager $manager)
     {
@@ -26,10 +21,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             [
              'firstname' => 'Daniel',
              'lastname' => 'Marcelin',
-<<<<<<< HEAD
-=======
-             'role'=>'admin',
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
              'address' => 'Rue de la fontaine bleue 45',
              'postalCode' => '5340',
              'city' => 'Haltinne',
@@ -39,12 +30,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
              'image_size' => 2,
              'updated_at' => new \DateTime('2019-01-02'),
              'description' => 'Généralement, j\'ai du temps à consacrer aux gens. 
-<<<<<<< HEAD
               Je suis poli, serviable et une personne de confiance',
               'nbPoint' => 20,
-=======
-             Je suis poli, serviable et une personne de confiance',
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             ],
             [
              'firstname' => 'Géraldine',
