@@ -8,12 +8,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .block{margin-top:50px;}
     .text{margin-top:30px;}
-    .bntCat{margin-top: 30px; margin:auto; display:block;}
+    .bntCat{ margin:auto; display:block; text-align:center;}
+    .bntCat:hover{ text-decoration:none;}
     .btnCat a{text-decoration:none; }
     .btnCat a:hover{text-decoration:none;color:#fff; }
-
-   
-    
+    *{font-family: "Nunito";}
+  
 </style>
 
 <div class="example-wrapper">
@@ -147,8 +147,8 @@
         
             {% if category.name == 'assistance' %}
             
-            <p>Nous avons tous, un jour ou l'autre, besoin d'aide. Dans cette catégorie, vous retrouverez toutes les demandes 
-            concernant les différentes {{ category.name}}s: 
+            <p style="text-align:center;">Nous avons tous, un jour ou l'autre, besoin d'aide. Dans cette catégorie, vous retrouverez toutes les demandes 
+            concernant les différentes {{ category.name}}s: </p>
             <ul>
                 <li>Aide ménagère</li>
                 <li>Faire les courses</li>
@@ -157,41 +157,26 @@
                 <li>etc.</li>
 
             </ul>
-            Aider les autres part parfois de petites choses. Les personnes seules, âgées ou encore juste dans le besoin,
+            <p style="text-align:center;">Aider les autres part parfois de petites choses. Les personnes seules, âgées ou encore juste dans le besoin,
              seront ravie de trouver de l'aide auprès de vous!
             </p>
             {% elseif category.name == 'animaux' %} 
-            <p>Nos animaux, on les aime comme nos enfants. Ils font partie de notre quotidien et de notre vie.
-            Dans cette catégorie, seront regroupées les annonces concernant les {{ category.name}}: 
-            <ul>
-                <li>Prendre l'air</li>
-                <li>Nourrir</li>
-                <li>Dresser</li>
-                <li>Emmener chez le vétérinaire</li>
-                <li>etc.</li>
-
-            </ul>
-            Les demandes que vous ferez sont principalements ciblées sur vos animaux de compagnie.
+            <p style="text-align:center;">Vous avez besoin que l’on garde votre chien ce week-end ? Vous rêvez d’avoir un chat et seriez ravi de pouvoir en garder un de temps en temps ? Votre association a besoin de bénévoles pour participer au suivi de la migration des oiseaux ou s’occuper d’animaux ?
+            Cette catégorie est pour vous ! Créez votre annonce dans cette catégorie.
             </p>
             {% elseif category.name == 'enfance' %}
-            <p>Nous aimons parfois nous retrouver en tête-à-tête entre parents, sans les enfants. Cette catégorie regroupe: 
-            <ul>
-                <li>Babysitting</li>
-                <li>Récupérer à la sortie de l'école</li>
-                <li>Amener à l'école</li>
-                <li>Garderie après école</li>
-                <li>etc.</li>
-            </ul>
-            C'est donc à vous, qui voulez de l'aide, d'écrire une annonce précise quant à la demande.
-            En choississant cette catégorie, la demande sera classée par rapport aux enfants.
+            <p style="text-align:center;">Chers parents, vous avez envie de regarder autre chose que la Reine des Neiges le samedi soir et vous en avez marre de faire les trajets au foot tous les mercredis... ? <br><br>Alors créez une petite annonce dans cette catégorie pour trouver quelqu’un pour garder vos chérubins de temps en temps ou partager des conduites.
+            Pour tous ceux qui ont gardé leur âme d’enfants et cherchent à aider des parents, alors consultez les annonces qui figurent ci dessous :) 
             </p>
             {% elseif category.name == 'transport' %}          
-            <p>Cette catégorie comprend les aides demandées concernant les transports</p>
+            <p style="text-align:center;">Vous n'êtes pas véhiculé mais vous devez vous rendre quelque part en voiture ? Vous déménagez et vous avez besoin d'un véhicule utilitaire ? Vous êtes à la recherche de gros bras pour vous aider à porter vos affaires ?
+            Cherchez un coup de pouce ici en créant une petit annonce.</p>
             {% elseif category.name == 'jardinage' %}
-            <p>Cette catégorie comprend les aides demandées concernant les jardinage</p>
+            <p style="text-align:center;">Besoin d’un coup de main pour monter un meuble, arroser vos plantes pendant les vacances ou d’un voisin sympa pour un petit déménagement ? Alors créez votre annonce dans cette catégorie pour que les gros bras et les petites mains volent à votre rescousse !
+            Si vous avez les pouces verts ou de bons muscles, à votre tour de proposer votre aide en créant une annonce ou bien sélectionnez celles de vos voisins qui n’attendent que vous !</p>
             {% endif %}
         <div class="btnCat">
-            <button class="btn btn-outline-primary"><a href="http://localhost:8000/category/">Retour vers les catégories</a></button>
+            <button class="btn btn-outline-primary btnCategory"><a href="http://localhost:8000/category/">Retour vers les catégories</a></button>
        
         </div>
    </div>

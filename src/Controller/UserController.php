@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Request as Annonce;
 use App\Form\RequestType;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,11 +40,15 @@ class UserController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(User::class);
         $user = $repository->find($user);
 
-        
+        $annonces = $this->getDoctrine()
+            ->getRepository(Annonce::class)
+            ->findBy(['requester' => $user->getId()]);
+           
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
-            'id' => $user->getId(),     
+            'id' => $user->getId(),   
+            'requests' => $annonces,  
           
         ]);
     }  
@@ -52,7 +57,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user,  UserPasswordEncoderInterface $encoder)
+    public function edit(Request $request, User $user, UserPasswordEncoderInterface $encoder)
     {
         $this->getUser();
 
@@ -70,8 +75,6 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($hash); 
             $this->getDoctrine()->getManager()->flush();
-            
-
             return $this->redirectToRoute('user_show', ['id'=> $user->getId()]);
         }
 

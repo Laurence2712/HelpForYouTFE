@@ -11,14 +11,15 @@
     .banniere { margin-top: 60px; background: #048b9a; border: 1px solid #048b9a; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
     .containerService{ margin-bottom: 25px;}
     .btnService{ }
-    .title { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
+    .title { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 15px; padding: 20px; color:#fff; text-align:center; margin-bottom:60px;}
+    *{font-family: 'Lato';}
 </style>
 
 <div class="example-wrapper">
 {% if editMode %}
     <h1 class="title">Modification de l'annonce</h1>   
 {% else %}
-    <h1 class="title">Création d'une annonce</h1>      
+    <h1 class="title">Créez votre annonce</h1>      
 {% endif %}
 
 {{ form_start(formRequest)}}

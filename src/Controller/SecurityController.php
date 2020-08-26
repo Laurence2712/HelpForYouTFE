@@ -45,6 +45,8 @@ class SecurityController extends AbstractController
                 $user->setImageName('logo.png');
                 $user->setImageSize(2);
                 $user->setDescription('Pas encore de description');
+                $user->setNbPoint(20);
+
                         
             }
            

@@ -37,9 +37,9 @@ class RequestController extends AbstractController
         //dump($httpRequest->query->get('postalCode'));
 		$repository = $this->getDoctrine()->getRepository(Request::class);
         if($httpRequest->query->has('postalCode')) {
-            $requests = $repository->findBy(['postalCode' => $httpRequest->query->get('postalCode')]);
+            $requests = $repository->findBy(['postalCode' => $httpRequest->query->get('postalCode')], ['id' => 'DESC']);
         } else {
-            $requests = $repository->findAll($search);
+            $requests = $repository->findBy([],['id' => 'DESC']);
         }
         //dump($requests);
         $annonces = $paginator->paginate(
@@ -60,12 +60,12 @@ class RequestController extends AbstractController
      * @Route("/request/{id}/edit", name="request_edit")
      */
     public function form( Request $request = null, EntityManagerInterface $manager, HttpRequest $httpRequest ){
-      
+        
         $user = $this->getUser();
         if(!$request){
             $request = new Request();
         }
-
+        
 
         $form = $this->createForm(RequestType::class, $request);
    
@@ -73,7 +73,11 @@ class RequestController extends AbstractController
       
         if($form->isSubmitted() && $form->isValid()){
             if(!$request->getId()){
-                $request->setCreatedAt(new \DateTime());             
+                //dd($user->getId());
+                $request->setCreatedAt(new \DateTime());
+                $request->setPostalCode($user->getPostalCode());
+                $request->setRequester($user);
+                
             }
    
             $manager->persist($request);
@@ -100,11 +104,46 @@ class RequestController extends AbstractController
 
         return $this->render('request/show.html.twig', [
             'demande' => $request,
-       
-
         ]);
-        
-
     }
+
+      /**
+     * @Route("/{id}/edit", name="request_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request = null, EntityManagerInterface $manager, HttpRequest $httpRequest): Response
+    {
+        $form = $this->createForm(RequestType::class, $request);
+        $form->handleRequest($httpRequest);
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {    
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('request_show', ['id'=> $request->getId()]);
+        }
+
+        return $this->render('request/edit.html.twig', [
+            'request' => $request,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="request_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, HttpRequest $httpRequest): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$request->getId(), $httpRequest->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($request);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('request');
+    }
+
+
 
 }

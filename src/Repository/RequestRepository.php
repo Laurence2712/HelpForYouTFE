@@ -30,6 +30,18 @@ class RequestRepository extends ServiceEntityRepository
         return $query->getQuery();
     }
 
+    /**
+     * @return int|mixed|string|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countAllRequest()
+    {
+        $queryBuilder = $this->createQueryBuilder('a');
+        $queryBuilder->select('COUNT(a.id) as value');
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+
+    }
     // /**
     //  * @return Request[] Returns an array of Request objects
     //  */

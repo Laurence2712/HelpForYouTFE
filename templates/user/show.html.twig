@@ -6,72 +6,158 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .infosUser { margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px;}
-    .infosUser p, .nbPointsUser p, .servicesCommentaires { color: #fff;}
-    .infosUser h1 { text-align:center; color:#fff; margin-bottom:60px;}
-    .infosUser img {border:1px solid #000; border-radius: 50%;}
+    .infosUser { margin-top: 60px; border: 1px solid #005c96; border-radius: 50px; padding: 20px;}
+    .infosUser p, .nbPointsUser p, .servicesCommentaires { color: #000;}
+    .infosUser h2 { text-align:center; color:#000; margin-bottom:60px;}
+    .infosUser img {margin-left:50px; margin-top: -50px;}
     .nbPointsUser{ margin-top: 60px; background: #318ce7; border: 1px solid ##318ce7; border-radius: 50px; text-align:center; padding: 20px; max-width:300px; height:auto;}
     .servicesCommentaires {  margin-top: 60px; background: #005c96; border: 1px solid #005c96; border-radius: 50px; padding: 20px; }
     .about{ margin-top: 50px;}
+    .btnNewRequest{margin:auto; display:block;margin-bottom:30px;}
+    .btnNewRequest a{color:#fff;}
+    .btnNewRequest a:hover {text-decoration: none;}
+    .btnEditProfil a{color:#fff}
+    .btnEditProfil a:hover{text-decoration: none;}
+    .titleTab{background-color:#005c96;color:#fff;}
+    .btn a{color:#fff;}
+    .btn a:hover{text-decoration:none;}
+    *{font-family: 'Lato';}
+    button.btn.btn-primary.btnEditProfil {
+    margin: auto;
+    display: block;
+    margin-top: 15px;
+}
 </style>
 
 <div class="example-wrapper">
  
 <div class="container infosUser">
-<h1>MON PROFIL</h1>
+<h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
   <div class="row"> 
-    <div class="col">
+    <div class="col-6">
       <img src="{{ asset('images/' ~ app.user.imageName) }}" alt="" width="200">
-   
-      
     </div>
-    <div class="col">
-      <p> NOM: {{ app.user.lastname }}</p>
-   
-      <p> PRENOM: {{ app.user.firstname }}</p>
-      
-      <p> ADRESSE: {{ app.user.address }} {{ app.user.postalCode }} {{ app.user.city }}</p>
-      <p> EMAIL: {{ app.user.email }}</p>
-      
-    </div>
-  </div>
-</div>
-<div class="container about">
-  <div class="row">
-    <div class="col">
-    <h3>A propos de moi:</h3>
-    <p>{{ app.user.description }}</p>
-    </div>
-  </div>
-</div>
-<div class="container" style="margin-top:30px;">
-  <div class="row">
-    <div class="col">
-    <h3>Nombre de points:</h3>
-    <p><span style="font-size:25px;">20</span> points</p>
+    <div class="col-6">
+      <p></i> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+    </svg> {{ app.user.address }} | {{ app.user.postalCode }} {{ app.user.city }}</p>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+    </svg> {{ app.user.email }}</p>
+    
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm6 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 11.825 10.623 11 8 11s-4.146.826-5 1.755V13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+    </svg> {{ app.user.description }}
+     <p><button class="btn btn-primary btnEditProfil"><a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier le profil</a></button></p>
     </div>
   </div>
 </div>
 
 
-<div style="margin-top:50px; text-align:center; border: 1px solid #005c96; max-width:150px; border-radius: 30px;">
-<a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier le profil</a>
 
-</div>
-<!--<div class="container ">
+<div class="container" style="margin-top:20px;">
   <div class="row">
-    <div class="col">
-    <p><a href="">Mes annonces:</a></p>
-    <p></p>
+    <div class="col-12">
+    <p style="margin:auto; display:block; text-align:center; margin-bottom:50px;">Vous avez encore <span style="font-size:45px;">{{ user.nbPoint }}</span> points à échanger</p>
+    </div>
+     <div class="col-12">
+     <button class="btn btn-info btnNewRequest"><a href="{{ path('request_create')}}">Ajouter une nouvelle annonce</a></button>
     </div>
   </div>
 </div>
-<div class="container servicesCommentaires">
-  <div class="row">
-    <div class="col">  
-      <p>Mes commentaires:</p>
+
+
+<div class="col-12">
+    <h4 style="text-align:center;">Mes annonces:</h4>
+    <hr>
+
+    <!--
+    {% for request in requests %}
+
+
+
+<div class="container" style="max-width:auto; ">
+  <div class="row"> 
+      <div class="col-6"> 
+          <p style="color: #048b9a; font-weight: bold; text-transform: uppercase; font-size:20px;margin-bottom:10px; text-align:center;">{{ request.category.name }} </p>
+          <p><span style="font-weight: bold; font-size:14px;"> Annonce publiée le:</span> <span style="font-size:14px; font-weight: normal; text-align:center;">{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</span></p>
+                  <p><span style="font-weight: bold; font-size:14px;">Titre :</span>{{ request.title }}</p>
+                  <p><span style="font-weight: bold; font-size:14px;">Description:</span> {{ request.description }}</p>
+                  <p><span style="font-weight: bold; font-size:14px;">Points demandés:</span> <span style="font-size:25px">{{ request.nbPoint }}</span></p> 
+                  <hr>  
+    </div>
+  </div>
+</div>
+   {% endfor %}
+</div>
+
+
+
+-->
+
+
+
+
+
+  </div>
+</div>
   </div>
 </div>
 
-</div>-->
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <table class="table table-striped table-bordered" style="width:100%"  id="myTable">
+      <thead>
+        <tr>
+          <th class="titleTab">Catégorie</th>
+          <th class="titleTab">Titre</th>
+          <th class="titleTab">Description</th>
+           <th class="titleTab">Points</th>
+          <th class="titleTab">Dates et heures</th>
+          <th class="titleTab">Modifier</th>
+          <th class="titleTab">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for request in requests %}
+          <tr>
+            <td>{{  request.category.name  }}</td>
+             
+
+            <td>{{ request.title }}</td>
+            <td>{{ request.description }}</td>
+            <td>{{ request.nbPoint }}</td>
+            
+          <td><datetime>{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</datetime></td>
+          <td><button type="button" class="btn btn-info"><a href="{{ path('request_edit', {'id': request.id}) }}">Modifier</a></button></td>
+          <td>{{ include('request/delete.html.twig') }}</td>
+        </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

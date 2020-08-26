@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -18,6 +21,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * fields={"email"},
  * message="L'email que vous avez utilisé est déjà utilisé"
  * )
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -77,6 +81,12 @@ class User implements UserInterface
     private $image_name;
 
     /**
+     * @Vich\UploadableField(mapping="userImages", fileNameProperty="image")
+     * @var File
+     */
+    private $image_name_file;
+
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $image_size;
@@ -106,7 +116,10 @@ class User implements UserInterface
      */
     private $allComments;
 
-   
+   /**
+     * @ORM\Column(type="integer")
+     */
+    private $nbPoint;
 
     /**
      * @ORM\ManyToMany(targetEntity=Role::class, inversedBy="users")
@@ -128,6 +141,8 @@ class User implements UserInterface
     {
         return $this->id;
     }
+
+
 
     public function getFirstname(): ?string
     {
@@ -224,6 +239,30 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return File|null
+     */
+
+    public function getImageNameFile(): ?File
+    {
+        return $this->image_name_file;
+    }
+
+    /**
+     * @param File|null $image_name_file
+     */
+    public function setImageNameFile(?File $image_name_file = null): self
+    {
+        $this->image_name_file = $image_name_file;
+
+        if(null !== $image_ame_file){
+
+        }
+        return $this;
+    }
+    
+
 
     public function getImageSize(): ?int
     {
@@ -401,6 +440,18 @@ class User implements UserInterface
                 $allComment->setCommented(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNbPoint(): ?int
+    {
+        return $this->nbPoint;
+    }
+
+    public function setNbPoint(int $nbPoint): self
+    {
+        $this->nbPoint = $nbPoint;
 
         return $this;
     }

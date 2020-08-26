@@ -6,142 +6,69 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    .banniere { margin-top: 60px; background: #048b9a; border: 1px solid #048b9a; border-radius: 15px; padding: 20px; color:#fff; text-align:center;}
+    .banniere { margin-top: 60px; background: #048b9a; border: 1px solid #048b9a; border-radius: 15px; color:#fff; text-align:center; padding:20px;}
     .containerService{ margin-bottom: 25px;}
-    .btnService{ }
     .navigation{ margin:auto; display:table;}
-    .textSearch p{width:800px; margin-bottom:50px;}
-    .form-group{text-align:center;}
+    .textSearch p{width:800px;}
+    
+    .infoUser{margin-top:30px;}
+    *{font-family: 'Lato';}
+    .postalCodeSearch{max-height:200px;}
 </style>
 
 <div class="example-wrapper">
     <h2 class="banniere">LES {{ resource }}</h2>
-<!--
-<table>
-    <thead>
-        <tr>
-            <th> Catégorie </th>
-            <th> Titre </th>
-            <th> Description </th>
-            <th> Nombre de points </th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for request in requests %}
-    <tr>
-        <td>{{ request.category.name }}</td>
-        <td>{{ request.title }}</td>
-        <td>{{ request.description }}</td>
-        <td>{{ request.nbPoint }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+      <div class="jumbotron postalCodeSearch">
+          <div class="container">
+              {{ form_start(form) }}
+              <div class="form-row align-items-end">
+                  <div class="col textSearch">
+                      <p>Filtrez les annonces en indiquant le code postal le plus proche de chez vous!</p>{{ form_row(form.postalCode)}}
+                  </div>
+                  <div class="col">
+                  <div class="form-group">
+                      <button class="btn btn-primary">Rechercher</button>
+                      </div>
+                  </div>
+              </div>
+                  {{ form_end(form) }}
+          </div>
+      </div>
 
-<hr>
--->
-
-
-<div class="jumbotron">
-    <div class="container">
-        {{ form_start(form) }}
-        <div class="form-row align-items-end">
-            <div class="col textSearch">
-                <p>Veuillez entrer le code postal le plus proche de chez vous pour filtrer les annonces:</p>{{ form_row(form.postalCode)}}
-            </div>
-            <div class="col">
-            <div class="form-group">
-                <button class="btn btn-primary">Rechercher</button>
-                </div>
-            </div>
-        </div>
-            {{ form_end(form) }}
-    </div>
-</div>
-
-<div class="col">
-{% for request in annonces %}
-<div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px; padding:20px;">
-
-    <div class="row">
+      <div class="annonces">
         <div class="col">
-        <hr>
-        <p style="font-weight: bold; font-size:16px;">Annonce publiée le: <span style="font-size:14px; font-weight: normal;">{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</span></p>
-        <hr>
-            <img src="{{ asset('images/' ~ request.requester.imageName) }}" style="border:3px solid #048b9a; border-radius:30%; max-height:150px;">
-            
-            <p style="font-weight: bold; font-size:16px;">Nom: <span style="font-size:14px; font-weight: normal;">{{ request.requester.lastname }}</span></p>
-            <p style="font-weight: bold; font-size:16px;">Prenom: <span style="font-size:14px; font-weight: normal;"> {{ request.requester.firstname }}</span></p>
-            <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
-            <p style="font-weight: bold; font-size:16px;">Ville: <span style="font-size:14px; font-weight: normal;">{{ request.requester.city }}</span></p>
-             <p style="font-weight: bold; font-size:16px;">Code postal: <span style="font-size:14px; font-weight: normal;">{{ request.requester.postalCode }}</span></p>
-            
-        </div>
-        <div class="col" style="margin-top:80px;">        
-        <p style="color: #048b9a; font-weight: bold; text-transform: uppercase; font-size:20px;margin-bottom:10px;">{{ request.category.name }} </p>
-                <hr>
-                <p style="font-weight: bold; font-size:16px;">{{ request.title }}</p>
-                <p style="font-size:14px;">{{ request.description }}</p>
-                <p style="font-size:14px;">Nombre de points demandés: <span style="font-size:25px">{{ request.nbPoint }}</span></p>           
-        </div>
-      
-    </div>
-     <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;" ><a href="" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
-    </div>
-</div>
-
- {% endfor %}
- </div>
-
-
-<!--
-<div class="container">
-  <table class="table table-striped table-bordered" style="width:100%"  id="myTable">
-      <thead>
-        <tr>
-          <th class="titleTab">Nom</th>
-          <th class="titleTab">Prénom</th>
-          <th class="titleTab">Ville</th>
-          <th class="titleTab">Code postal</th>
-          <th class="titleTab">Catégorie</th>
-          <th class="titleTab">Date de publication</th>
-        </tr>
-        </thead>
-        <tbody>
           {% for request in annonces %}
-          <tr>
-            <td>{{ request.requester.lastname }}</td>
-              {% if request.requester.firstname  %}
+          <div class="container containerService" style="border:1px solid #048b9a; border-radius:50px; max-width:800px;padding:15px;">
 
-            <td>{{ request.requester.firstname  }}</td>
-            {% else %}
-            <td>/</td>
-              {% endif %}
-            <td>{{ request.requester.city }}</td>
-            <td>{{ request.requester.postalCode }}</td>
-            <td>{{ request.category.name }}</td>
-          <td><datetime>{{ request.createdAt |date('Y-m-d') }}</datetime></td>
-        </tr>
+              <div class="row">
+                  <div class="col-6">
+                  <hr>
+                  <p style="font-weight: bold; font-size:16px;">Annonce publiée le: <span style="font-size:14px; font-weight: normal;">{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</span></p>
+                  <hr>
+                      <img src="{{ asset('images/' ~ request.requester.imageName) }}" style="border:3px solid #048b9a; border-radius:30%; max-height:150px;">
+                      <div class="infoUser">
+                        <p style="font-weight: bold; font-size:16px;">Nom: <span style="font-size:14px; font-weight: normal;">{{ request.requester.lastname }} {{ request.requester.firstname }}</span></p>
+                        <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
+                        <p style="font-weight: bold; font-size:16px;">Ville: <span style="font-size:14px; font-weight: normal;">{{ request.requester.city }} | {{ request.requester.postalCode }}</span></p>
+                      </div>
+                  </div>
+                  <div class="col-6" style="margin-top:27px;"> 
+                  <p style="color: #048b9a; font-weight: bold; text-transform: uppercase; font-size:20px;margin-bottom:10px;">{{ request.category.name }} </p>
+                          <hr>
+                          <p style="font-weight: bold; font-size:16px;">{{ request.title }}</p>
+                          <p style="font-size:14px;">{{ request.description }}</p>
+                          <p style="font-size:14px;">Points à gagner: <span style="font-size:25px">{{ request.nbPoint }}</span></p>           
+                  </div>
+              </div>
+                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('comment') }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+              </div>
+          </div>
           {% endfor %}
-        </tbody>
-            <tfoot>
-              <tr>
-                <th class="titleTab">Nom</th>
-                <th class="titleTab">Prénom</th>
-                <th class="titleTab">Ville</th>
-                <th class="titleTab">Code postal</th>
-                <th class="titleTab">Catégorie</th>
-                <th class="titleTab">Date de publication</th>
-              </tr>
-            </tfoot>
-    </table>
-</div>
--->
-
-<div class="navigation">
-{{ knp_pagination_render(annonces) }}
-</div>
-
+        </div> 
+      </div>
+      <div class="navigation">
+      {{ knp_pagination_render(annonces) }}
+      </div>
 </div>
 
 {% endblock %}

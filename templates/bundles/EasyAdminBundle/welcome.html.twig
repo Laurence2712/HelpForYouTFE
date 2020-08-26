@@ -1,0 +1,30 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Mon tableau de bord' %}
+
+
+{% block page_content %}
+    <style>
+        p { max-width: 600px; }
+        .btn-light{margin:auto; text-align:center; display:block;margin-top:50px;}
+    </style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 alert-warning">
+         <span class="display-3">{{countAllUser['value']}}</span> utilisateurs
+        </div>
+        <div class="col-6 alert-success">
+         <span class="display-3">{{countAllRequest['value']}}</span> annonces
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <button class="btn btn-light"><a class="nav-link" href="{{ path('prestation')}}">Retour vers la page d'accueil</a></button>
+    </div>
+</div>
+
+{% endblock %}

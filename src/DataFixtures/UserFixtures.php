@@ -31,6 +31,7 @@ class UserFixtures extends Fixture
              'updated_at' => new \DateTime('2019-01-02'),
              'description' => 'Généralement, j\'ai du temps à consacrer aux gens. 
               Je suis poli, serviable et une personne de confiance',
+              'nbPoint' => 20,
             ],
             [
              'firstname' => 'Géraldine',
@@ -44,6 +45,7 @@ class UserFixtures extends Fixture
              'image_size' => 1,
              'updated_at' => new \DateTime('2019-01-02 13:05:21'),
              'description' => 'J\'ai l\'habitude de m\'occuper d\'enfants et d\'animaux',
+             'nbPoint' => 20,
             ],
             [
        
@@ -58,6 +60,7 @@ class UserFixtures extends Fixture
              'image_size' => 2,
              'updated_at' => new \DateTime('2019-01-02 13:21:21'),
              'description' => 'Toujours au service des autres',
+             'nbPoint' => 20,
             ],
             [
                 
@@ -72,6 +75,7 @@ class UserFixtures extends Fixture
             'image_size' => 2,
             'updated_at' => new \DateTime('2020-01-02 13:21:21'),
             'description' => 'Je suis une personne de confiance, j\'ai l\'habitude d\'aider les autres',
+            'nbPoint' => 20,
            ],
         ];
 
