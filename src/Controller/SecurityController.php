@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+
 use App\Entity\Role;
+use App\Entity\User;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 
 
 class SecurityController extends AbstractController
@@ -33,6 +34,8 @@ class SecurityController extends AbstractController
         $defaultRole = $this->getDoctrine()
             ->getRepository(Role::class)
             ->findOneBy(['role' => 'membre']);
+
+       
     
         $form = $this->createForm(RegistrationType::class, $user);
 
@@ -42,14 +45,15 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             if(!$user->getId()){
                 $user->setUpdatedAt(new \DateTime());
-                $user->setImageName('logo.png');
-                $user->setImageSize(2);
+                
+                $user->setImageSize(3);
                 $user->setDescription('Pas encore de description');
-                $user->setNbPoint(20);
-
-                        
+                $user->setNbPoint(20);   
+                $user->setImageName('logo.png');
+               
+                
             }
-           
+          
                      
             $hash = $encoder->encodePassword($user, $user->getPassword()); 
             $user->setPassword($hash);  

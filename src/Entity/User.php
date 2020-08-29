@@ -228,12 +228,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getImageName(): ?string
+    public function getImageName()
     {
         return $this->image_name;
     }
 
-    public function setImageName(string $image_name): self
+    public function setImageName( $image_name)
     {
         $this->image_name = $image_name;
 

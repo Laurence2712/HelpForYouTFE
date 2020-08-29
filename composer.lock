@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "c77f420386275fb166baf934b34f4ee7",
-=======
-    "content-hash": "60fb5ee49a89dbb94ba45d5e44e22f5a",
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
+    "content-hash": "99859edf7c8650185043a6ce04bf7453",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1238,7 +1234,6 @@
             "time": "2020-03-27T11:06:43+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "easycorp/easyadmin-bundle",
             "version": "v3.1.3",
             "source": {
@@ -1321,8 +1316,6 @@
             "time": "2020-07-22T18:05:08+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "egulias/email-validator",
             "version": "2.1.17",
             "source": {
@@ -1431,7 +1424,6 @@
             "time": "2014-01-12T16:20:24+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "jms/metadata",
             "version": "2.3.0",
             "source": {
@@ -1490,8 +1482,6 @@
             "time": "2020-06-06T16:52:59+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "knplabs/knp-components",
             "version": "v2.3.5",
             "source": {
@@ -1636,6 +1626,48 @@
             "time": "2020-04-28T06:16:13+00:00"
         },
         {
+            "name": "mercuryseries/flashy-bundle",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/flashy-bundle.git",
+                "reference": "a92dec77e2c62ae5c9a576b89d119354e5597eef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/flashy-bundle/zipball/a92dec77e2c62ae5c9a576b89d119354e5597eef",
+                "reference": "a92dec77e2c62ae5c9a576b89d119354e5597eef",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/config": "^3.4 || ^4.0 || ^5.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0",
+                "symfony/http-kernel": "^3.4 || ^4.0 || ^5.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4 || ^4.0 || ^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "MercurySeries\\FlashyBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honore Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Easy flash notifications in Symfony",
+            "time": "2019-11-28T01:07:50+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.1.0",
             "source": {
@@ -1717,7 +1749,6 @@
             "time": "2020-05-22T08:12:19+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "nikic/php-parser",
             "version": "v4.4.0",
             "source": {
@@ -1770,8 +1801,6 @@
             "time": "2020-04-10T16:34:50+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "ocramius/package-versions",
             "version": "1.4.2",
             "source": {
@@ -4671,7 +4700,6 @@
             "time": "2020-05-12T16:47:27+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "symfony/polyfill-uuid",
             "version": "v1.18.1",
             "source": {
@@ -4735,8 +4763,6 @@
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "symfony/process",
             "version": "v5.0.8",
             "source": {
@@ -5961,7 +5987,6 @@
             "time": "2019-10-17T05:44:22+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "symfony/uid",
             "version": "v5.1.3",
             "source": {
@@ -6020,8 +6045,6 @@
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "symfony/validator",
             "version": "v5.0.8",
             "source": {
@@ -6505,7 +6528,6 @@
             "time": "2020-02-11T15:33:47+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "vich/uploader-bundle",
             "version": "1.15.0",
             "source": {
@@ -6605,8 +6627,6 @@
             "time": "2020-07-09T07:29:07+00:00"
         },
         {
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "webmozart/assert",
             "version": "1.8.0",
             "source": {
@@ -6952,61 +6972,6 @@
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
-<<<<<<< HEAD
-=======
-            "name": "nikic/php-parser",
-            "version": "v4.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2020-04-10T16:34:50+00:00"
-        },
-        {
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
             "name": "symfony/browser-kit",
             "version": "v5.0.8",
             "source": {

@@ -65,17 +65,25 @@ class UserController extends AbstractController
             $user = new User();
 
         }*/
-     
+        
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         $hash = $encoder->encodePassword($user, $user->getPassword()); 
-        $user->setPassword($hash);  
+        //$user->setPassword($hash);  
         
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $user->getImageName();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'), $fileName);
+            $user->setImageName($fileName);
+
+            
             $user->setPassword($hash); 
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('user_show', ['id'=> $user->getId()]);
+            
+            return $this->redirectToRoute("user_show", ['id'=> $user->getId()]);
+            //dd($user->getId());
         }
 
         return $this->render('user/edit.html.twig', [

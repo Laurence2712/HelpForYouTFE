@@ -93,7 +93,6 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
-<<<<<<< HEAD
     "easycorp/easyadmin-bundle": {
         "version": "2.0",
         "recipe": {
@@ -107,8 +106,6 @@
             "config/routes/easy_admin.yaml"
         ]
     },
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     "egulias/email-validator": {
         "version": "2.1.17"
     },
@@ -118,17 +115,17 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-<<<<<<< HEAD
     "jms/metadata": {
         "version": "2.3.0"
     },
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     "knplabs/knp-components": {
         "version": "v2.3.5"
     },
     "knplabs/knp-paginator-bundle": {
         "version": "v5.2.0"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v3.0.0"
     },
     "monolog/monolog": {
         "version": "2.1.0"
@@ -402,12 +399,9 @@
     "symfony/polyfill-php73": {
         "version": "v1.17.0"
     },
-<<<<<<< HEAD
     "symfony/polyfill-uuid": {
         "version": "v1.18.1"
     },
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     "symfony/process": {
         "version": "v5.0.8"
     },
@@ -512,12 +506,9 @@
     "symfony/twig-pack": {
         "version": "v1.0.0"
     },
-<<<<<<< HEAD
     "symfony/uid": {
         "version": "v5.1.3"
     },
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -563,7 +554,6 @@
     "twig/twig": {
         "version": "v3.0.3"
     },
-<<<<<<< HEAD
     "vich/uploader-bundle": {
         "version": "1.5",
         "recipe": {
@@ -576,8 +566,6 @@
             "config/packages/vich_uploader.yaml"
         ]
     },
-=======
->>>>>>> 589ebd67701772fba3dcbac06822db2422230f91
     "webmozart/assert": {
         "version": "1.8.0"
     },

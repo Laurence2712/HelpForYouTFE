@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Request;
 use App\Entity\Category;
-use App\Entity\User;
 use App\Form\RequestType;
 use App\Entity\RequestSearch;
 use App\Form\RequestSearchType;
@@ -12,6 +12,7 @@ use App\Repository\RequestRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -59,7 +60,7 @@ class RequestController extends AbstractController
      * @Route("/request/new", name="request_create")
      * @Route("/request/{id}/edit", name="request_edit")
      */
-    public function form( Request $request = null, EntityManagerInterface $manager, HttpRequest $httpRequest ){
+    public function form( Request $request = null, EntityManagerInterface $manager, HttpRequest $httpRequest, FlashyNotifier $flashy ){
         
         $user = $this->getUser();
         if(!$request){
@@ -82,7 +83,10 @@ class RequestController extends AbstractController
    
             $manager->persist($request);
             $manager->flush();
+           
+            $flashy->success('success', 'Annonce créée!');
 
+           
             return $this->redirectToRoute('request_show', ['id'=> $request->getId()]);
        
         }
@@ -143,6 +147,10 @@ class RequestController extends AbstractController
 
         return $this->redirectToRoute('request');
     }
+
+
+
+
 
 
 

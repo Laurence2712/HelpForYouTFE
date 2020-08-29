@@ -45,7 +45,7 @@
                   <hr>
                   <p style="font-weight: bold; font-size:16px;">Annonce publiée le: <span style="font-size:14px; font-weight: normal;">{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</span></p>
                   <hr>
-                      <img src="{{ asset('images/' ~ request.requester.imageName) }}" style="border:3px solid #048b9a; border-radius:30%; max-height:150px;">
+                      <img src="{{ asset('uploads/' ~ request.requester.imageName) }}" style="border:3px solid #048b9a; border-radius:30%; max-height:150px;">
                       <div class="infoUser">
                         <p style="font-weight: bold; font-size:16px;">Nom: <span style="font-size:14px; font-weight: normal;">{{ request.requester.lastname }} {{ request.requester.firstname }}</span></p>
                         <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
@@ -60,7 +60,8 @@
                           <p style="font-size:14px;">Points à gagner: <span style="font-size:25px">{{ request.nbPoint }}</span></p>           
                   </div>
               </div>
-                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('comment') }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('request') }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+                
               </div>
           </div>
           {% endfor %}

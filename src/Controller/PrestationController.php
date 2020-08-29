@@ -9,7 +9,7 @@ use App\Entity\Prestation;
 class PrestationController extends AbstractController
 {
     /**
-     * @Route("/prestation", name="prestation")
+     * @Route("/", name="prestation")
      */
     public function index()
     {
