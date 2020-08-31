@@ -42,7 +42,7 @@ class RequestController extends AbstractController
         } else {
             $requests = $repository->findBy([],['id' => 'DESC']);
         }
-        //dump($requests);
+        //dd($requests);
         $annonces = $paginator->paginate(
             //$repository->findAllVisibleQuery($search),
             $requests,
@@ -78,6 +78,7 @@ class RequestController extends AbstractController
                 $request->setCreatedAt(new \DateTime());
                 $request->setPostalCode($user->getPostalCode());
                 $request->setRequester($user);
+               
                 
             }
    
@@ -111,6 +112,31 @@ class RequestController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/request/{id}/help", name="request_help")
+     * 
+     */
+    public function help($id, HttpRequest $httpRequest)
+    {
+        $user = $this->getUser();
+        
+		$repository = $this->getDoctrine()->getRepository(User::class);
+        $request = $repository->findBy(['email' => $httpRequest->query->get('email')]);
+
+        //dd($repository->findBy([]));
+        //dd($repository->findBy([]));
+
+        //return $this->redirectToRoute('request_show', ['id'=> $request->getId()]);
+
+        return $this->render('request/help.html.twig', [
+            'email' => $request,
+            'user' => $user,
+        ]);
+    
+    
+    }
+
       /**
      * @Route("/{id}/edit", name="request_edit", methods={"GET","POST"})
      */
@@ -122,7 +148,7 @@ class RequestController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {    
-
+          
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('request_show', ['id'=> $request->getId()]);
@@ -150,6 +176,7 @@ class RequestController extends AbstractController
 
 
 
+  
 
 
 

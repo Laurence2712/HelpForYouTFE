@@ -20,10 +20,11 @@
 <img src="{{ asset('images/satisfait.png') }}">
 <hr>
 <h5>Redirigez-vous vers son profil pour contacter cette personne</h5>
-<br>
-<br>
-<br>
-<p>Lien vers <a href=""> son profil</a></p>
+
+ {% for request in email %}
+   <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
+{% endfor %}
+
 </div>
 
 {% endblock %} 

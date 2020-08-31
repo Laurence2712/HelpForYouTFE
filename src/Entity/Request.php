@@ -37,6 +37,7 @@ class Request
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive(message="Le nombre de points doit être positif et plus grand que 0!")
      */
     private $nbPoint;
 

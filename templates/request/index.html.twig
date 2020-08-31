@@ -60,7 +60,7 @@
                           <p style="font-size:14px;">Points à gagner: <span style="font-size:25px">{{ request.nbPoint }}</span></p>           
                   </div>
               </div>
-                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('request') }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
+                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('request_help', {'id': app.user.id}) }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
                 
               </div>
           </div>
