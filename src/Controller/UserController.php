@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Request as Annonce;
+use App\Entity\Comment;
 use App\Form\RequestType;
 use App\Form\RegistrationType;
+use App\Entity\Request as Annonce;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,20 +40,59 @@ class UserController extends AbstractController
    
         $repository = $this->getDoctrine()->getRepository(User::class);
         $user = $repository->find($user);
+        
 
         $annonces = $this->getDoctrine()
             ->getRepository(Annonce::class)
             ->findBy(['requester' => $user->getId()]);
-           
+
+        $commentaires = $this->getDoctrine()
+        ->getRepository(Comment::class)
+        ->findBy(['commentator' => $user->getId()]);
+        //dd($commentaires);
+
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
             'id' => $user->getId(),   
             'requests' => $annonces,  
+            'comments' => $commentaires,
           
         ]);
     }  
+    /**
+     * @Route("/user/{id}/showRequester", name="user_show_requester", methods={"GET"})
+     */
+    public function showRequester(Request $request, User $user)
+    {
 
+       
+        $this->getUser();
+   
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $user = $repository->find($user);
+        //dd($user);
+
+        $annonces = $this->getDoctrine()
+            ->getRepository(Annonce::class)
+            ->findBy(['requester' => $user->getId()]);
+
+        //dd($annonces);
+
+        $commentaires = $this->getDoctrine()
+        ->getRepository(Comment::class)
+        ->findBy(['commentator' => $user->getId()]);
+        //dd($commentaires);
+
+        return $this->render('user/showRequester.html.twig', [
+            'user' => $user,
+            'id' => $user->getId(),   
+            'requests' => $annonces,  
+            'comments' => $commentaires,
+          
+          
+        ]);
+    }  
 
     /**
      * @Route("/user/{id}/edit", name="user_edit", methods={"GET","POST"})

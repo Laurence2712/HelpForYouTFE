@@ -50,6 +50,7 @@
                         <p style="font-weight: bold; font-size:16px;">Nom: <span style="font-size:14px; font-weight: normal;">{{ request.requester.lastname }} {{ request.requester.firstname }}</span></p>
                         <p style="font-weight: bold; font-size:16px;">Email: <span style="font-size:14px; font-weight: normal;">{{ request.requester.email }}</span></p>
                         <p style="font-weight: bold; font-size:16px;">Ville: <span style="font-size:14px; font-weight: normal;">{{ request.requester.city }} | {{ request.requester.postalCode }}</span></p>
+                        
                       </div>
                   </div>
                   <div class="col-6" style="margin-top:27px;"> 
@@ -60,8 +61,15 @@
                           <p style="font-size:14px;">Points à gagner: <span style="font-size:25px">{{ request.nbPoint }}</span></p>           
                   </div>
               </div>
+            
+            <button class="btn btn-lg btn-primary btnService" type="submit"  style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('user_show_requester', {'id': request.requester.id}) }}" style="color: #fff; text-decoration:none;">Voir le profil de {{ request.requester.lastname }} {{ request.requester.firstname }}</a></button>
+    
+            {% if app.user %}
                 <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('request_help', {'id': app.user.id}) }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
-                
+            {% else %}
+                <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('security_login')}}" style="color: #fff; text-decoration:none;">Connectez-vous pour aider cette personne</a></button>
+            {% endif %}
+              
               </div>
           </div>
           {% endfor %}

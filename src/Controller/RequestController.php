@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Form\RequestType;
 use App\Entity\RequestSearch;
 use App\Form\RequestSearchType;
+use App\Repository\UserRepository;
 use App\Repository\RequestRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -30,7 +31,7 @@ class RequestController extends AbstractController
      * @Route("/request", name="request")
      * 
      */
-    public function index(PaginatorInterface $paginator, HttpRequest $httpRequest)
+    public function index(PaginatorInterface $paginator, HttpRequest $httpRequest, UserRepository $userRepository)
     {
         $search = new RequestSearch();
         $form = $this->createForm(RequestSearchType::class, $search);
@@ -49,10 +50,19 @@ class RequestController extends AbstractController
             $httpRequest->query->getInt('page', 1),
             3
         );
+
+
+        $users = $userRepository->findAll();
+        //dd($users);
+        
+
+
+
         return $this->render('request/index.html.twig', [
             'requests' => $requests,
             'annonces' =>$annonces,
             'resource' => 'ANNONCES',
+            'users' => $users,
             'form' => $form->createView(),
         ]);
     }
