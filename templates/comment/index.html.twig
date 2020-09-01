@@ -12,20 +12,19 @@
 
 <div class="example-wrapper">
     
-<h2 class="banniere">Laissez un {{ resource }}</h2>
-<div class="container ">
-<div class="formComment">
+<h2 class="banniere">Laissez un {{ resource }} à {{ userProfileFirstname }} {{ userProfileLastname }}</h2>
+    <div class="container ">
+        <div class="formComment">
 
-{{ form_start(formComment)}}
-{{ form_row(formComment.commented, {'label': 'Prénom de la personne commentée'}) }}
-{{ form_row(formComment.commentator, {'label': 'Prénom de la personne du profil à commenter'}) }}
-{{ form_row(formComment.text, {'label': 'Que voulez-vous dire?'}) }}
+        {{ form_start(formComment)}}
+      
+        {{ form_row(formComment.text, {'label': 'Que voulez-vous dire?'}) }}
 
-<button  type="submit" class="btn btn-success" style="margin:auto; display:block;">Ajouter</button>
+        <button  type="submit" class="btn btn-success" style="margin:auto; display:block;">Ajouter</button>
 
-{{ form_end(formComment)}}
-</div>
-</div>
+        {{ form_end(formComment)}}
+        </div>
+    </div>
 </div>
 
 

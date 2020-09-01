@@ -27,6 +27,10 @@
     display: block;
     margin-top: 15px;
 }
+.imgUser{
+border-radius:50%;
+}
+
 }
 
   
@@ -104,13 +108,16 @@
     <h4 style="text-align:center;">Les commentaires:</h4>
     <hr>
      {% for comment in comments %}
+     <div class="imgUser">
+     <img src="{{ asset('uploads/' ~ comment.commentator.imageName) }}" alt="" width="100">
+     </div>
     <p><i class="fa fa-comment"></i> {{ comment.commentator.firstname }} | {{ comment.text }} </p>
     {% endfor %}
 </div>
 
 <div class="formComment">
 
-<button  type="submit" class="btn btn-info" style="margin:auto; display:block;"><a href="{{ path('comment') }}">Ajouter un commentaire</a></button>
+<button  type="submit" class="btn btn-info" style="margin:auto; display:block;"><a href="{{ path('comment', {'id': user.id})}}">Ajouter un commentaire</a></button>
 
 
 </div>

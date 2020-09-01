@@ -8,7 +8,11 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .block{margin-top:50px;}
     .text{margin-top:30px;}
-    .bntCat{ margin:auto; display:block; text-align:center;}
+    .btnCat {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
     .bntCat:hover{ text-decoration:none;}
     .btnCat a{text-decoration:none; }
     .btnCat a:hover{text-decoration:none;color:#fff; }
@@ -176,7 +180,7 @@
             Si vous avez les pouces verts ou de bons muscles, à votre tour de proposer votre aide en créant une annonce ou bien sélectionnez celles de vos voisins qui n’attendent que vous !</p>
             {% endif %}
         <div class="btnCat">
-            <button class="btn btn-outline-primary btnCategory"><a href="http://localhost:8000/category/">Retour vers les catégories</a></button>
+            <button class="btn btn-outline-primary btnCategory"><a href="{{ path('category')}}">Retour vers les catégories</a></button>
        
         </div>
    </div>

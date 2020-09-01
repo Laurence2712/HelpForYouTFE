@@ -48,7 +48,7 @@ class UserController extends AbstractController
 
         $commentaires = $this->getDoctrine()
         ->getRepository(Comment::class)
-        ->findBy(['commentator' => $user->getId()]);
+        ->findBy(['commented' => $user->getId()]);
         //dd($commentaires);
 
 
@@ -81,7 +81,7 @@ class UserController extends AbstractController
 
         $commentaires = $this->getDoctrine()
         ->getRepository(Comment::class)
-        ->findBy(['commentator' => $user->getId()]);
+        ->findBy(['commented' => $user->getId()]);
         //dd($commentaires);
 
         return $this->render('user/showRequester.html.twig', [

@@ -15,13 +15,7 @@ class CommentType extends AbstractType
     {
         $builder
             
-            ->add('commentator', TextType::class, array(
-                'label' => 'Nom de la personne à commenter',
-            ))
-
-            ->add('commented', TextType::class, array(
-                'label' => 'Prénom de la personne connectée',
-            ))
+           
             ->add('text', TextareaType::class, array(
                 'label' => 'Que voulez-vous dire?',
             ))
