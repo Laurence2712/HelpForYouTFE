@@ -27,7 +27,7 @@
     display: block;
     margin-top: 15px;
 }
-.tabContainer{min-width:max-content;}
+}
 
   
 </style>
@@ -110,12 +110,18 @@
       </tbody>
   </table>
 
-  <div class="col-12">
-    <h4 style="text-align:center;">Mes commentaires:</h4>
-    <hr>
-     {% for comment in comments %}
-    <p>{{ comment.commentator.firstname }} | {{ comment.text }} </p>
-    {% endfor %}
+
+
+  <div class="example-wrapper">
+    <div class="container">
+      <div class="col-12">
+        <h4 style="text-align:center;">Mes commentaires:</h4>
+        <hr>
+        {% for comment in comments %}
+        <p><i class="fa fa-comment"></i> {{ comment.commentator.firstname }} | {{ comment.text }} </p>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 

@@ -12,26 +12,18 @@
 
 <div class="example-wrapper">
     
-<h2 class="banniere">LES {{ resource }}</h2>
+<h2 class="banniere">Laissez un {{ resource }}</h2>
 <div class="container ">
-
-<table style="width:100%">
-  {% for comment in comments %}
-  <tr>
-    <th>{{ comment.commentator.firstname }} {{ comment.commentator.lastname }} </th>
-  </tr>
-  <tr>
-    <td>{{ comment.text}} </td>
-  </tr>
-   {% endfor %} 
-</table>
-
 <div class="formComment">
+
 {{ form_start(formComment)}}
+{{ form_row(formComment.commented, {'label': 'Prénom de la personne commentée'}) }}
+{{ form_row(formComment.commentator, {'label': 'Votre prénom'}) }}
+{{ form_row(formComment.text, {'label': 'Que voulez-vous dire?'}) }}
+
+<button  type="submit" class="btn btn-success" style="margin:auto; display:block;">Ajouter</button>
 
 {{ form_end(formComment)}}
-<button  type="submit" class="btn btn-success" style="margin:auto; display:block;">Envoyer</button>
-
 </div>
 </div>
 </div>

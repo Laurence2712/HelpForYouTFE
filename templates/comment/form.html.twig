@@ -1,0 +1,11 @@
+{{ form_start(formComment) }}
+    {{ form_widget(formComment) }}
+
+
+{{ form_row(form.firstname, {'label': 'Prénom', 'attr':{'value':app.user.firstname}}) }}
+{{ form_row(form.text, {'label': 'Titre'}) }}
+
+
+
+    <button style="color:#fff;"class="btn btn-warning">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(formComment) }}

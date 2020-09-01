@@ -27,7 +27,7 @@
     display: block;
     margin-top: 15px;
 }
-.tabContainer{min-width:max-content;}
+}
 
   
 </style>
@@ -63,8 +63,8 @@
         <hr>
     </div>
 
-  </div>
 </div>
+
 
 
 </div>
@@ -106,7 +106,18 @@
      {% for comment in comments %}
     <p>{{ comment.commentator.firstname }} | {{ comment.text }} </p>
     {% endfor %}
-  </div>
+</div>
+
+<div class="formComment">
+
+<button  type="submit" class="btn btn-success" style="margin:auto; display:block;"><a href="{{ path('comment') }}">Ajouter un commentaire</a></button>
+
+
+</div>
+
+</div>
+
+
 </div>
 
 {% endblock %}
