@@ -40,22 +40,22 @@
 
   
     <h2>Profil de {{ user.firstname }} {{ user.lastname }}</h2>
-    <div class="col-6">
-          <img src="{{ asset('uploads/' ~ user.imageName) }}" alt="" width="200">
-    </div>
-    
-
-     <div class="col-6">
-          <p></i> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-        </svg> {{ user.address }} | {{ user.postalCode }} {{ user.city }}</p>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-        </svg> {{ user.email }} <button type="email"><a href="mailto:{{ user.email }}">Contacter</a></button></p>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm6 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 11.825 10.623 11 8 11s-4.146.826-5 1.755V13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
-        </svg> {{ user.description }}
+    <div class="row"> 
+      <div class="col-6">
+            <img src="{{ asset('uploads/' ~ user.imageName) }}" alt="" width="200">
+      </div>
+      <div class="col-6">
+            <p></i> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+          </svg> {{ user.address }} | {{ user.postalCode }} {{ user.city }}</p>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+          </svg> {{ user.email }} <button class="btn btn-primary" type="email"><a href="mailto:{{ user.email }}">Contacter</a></button></p>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm6 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 11.825 10.623 11 8 11s-4.146.826-5 1.755V13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+          </svg> {{ user.description }}
+      </div>
     </div>
 </div>
     <div class="col-12" style="margin-top:30px;">
@@ -94,7 +94,7 @@
             
           <td><datetime>{{ request.createdAt |date('Y-m-d') }} à {{ request.createdAt |date('H:i:s') }}</datetime></td>
             <td>Oui</td>
-            <td><button>Réserver</button></td>
+            <td><button class="btn btn-primary">Réserver</button></td>
         </tr>
           {% endfor %}
       </tbody>
@@ -104,13 +104,13 @@
     <h4 style="text-align:center;">Les commentaires:</h4>
     <hr>
      {% for comment in comments %}
-    <p>{{ comment.commentator.firstname }} | {{ comment.text }} </p>
+    <p><i class="fa fa-comment"></i> {{ comment.commentator.firstname }} | {{ comment.text }} </p>
     {% endfor %}
 </div>
 
 <div class="formComment">
 
-<button  type="submit" class="btn btn-success" style="margin:auto; display:block;"><a href="{{ path('comment') }}">Ajouter un commentaire</a></button>
+<button  type="submit" class="btn btn-info" style="margin:auto; display:block;"><a href="{{ path('comment') }}">Ajouter un commentaire</a></button>
 
 
 </div>
