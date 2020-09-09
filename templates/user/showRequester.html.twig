@@ -27,8 +27,15 @@
     display: block;
     margin-top: 15px;
 }
-.imgUser{
-border-radius:50%;
+.imgUser img{
+ border-radius:20%;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    float: left;
+  
 }
 
 }
@@ -108,10 +115,14 @@ border-radius:50%;
     <h4 style="text-align:center;">Les commentaires:</h4>
     <hr>
      {% for comment in comments %}
+     <div class="row">
+     <div class="col-6 comments">
      <div class="imgUser">
-     <img src="{{ asset('uploads/' ~ comment.commentator.imageName) }}" alt="" width="100">
+     <img src="{{ asset('uploads/' ~ comment.commentator.imageName) }}" alt="" width="25">
      </div>
     <p><i class="fa fa-comment"></i> {{ comment.commentator.firstname }} | {{ comment.text }} </p>
+    </div>
+    </div>
     {% endfor %}
 </div>
 

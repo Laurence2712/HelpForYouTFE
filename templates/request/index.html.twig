@@ -32,6 +32,7 @@
                   </div>
               </div>
                   {{ form_end(form) }}
+                  </div>
           </div>
       </div>
 
@@ -62,7 +63,7 @@
                   </div>
               </div>
             
-            <button class="btn btn-lg btn-primary btnService" type="submit"  style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('user_show_requester', {'id': request.requester.id}) }}" style="color: #fff; text-decoration:none;">Voir le profil de {{ request.requester.lastname }} {{ request.requester.firstname }}</a></button>
+            <button class="btn btn-lg btn-info btnService" type="submit"  style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('user_show_requester', {'id': request.requester.id}) }}" style="color: #fff; text-decoration:none;">Voir le profil de {{ request.requester.lastname }} {{ request.requester.firstname }}</a></button>
     
             {% if app.user %}
                 <button class="btn btn-lg btn-primary btnService" style="display:block; margin:auto; margin-bottom:20px; font-size:15px;"><a href="{{ path('request_help', {'id': app.user.id}) }}" style="color: #fff; text-decoration:none;">Je veux aider cette personne</a></button>
