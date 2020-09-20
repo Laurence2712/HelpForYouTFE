@@ -18,7 +18,7 @@ class PrestationController extends AbstractController
 
         return $this->render('prestation/index.html.twig', [
             'prestations' => $prestations,
-            'resource' => '20 points offerts dès l\'inscription',
+            'resource' => '20 points offerts dès l\'inscription !',
         ]);
     }
 
