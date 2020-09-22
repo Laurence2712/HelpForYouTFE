@@ -50,11 +50,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(min="4", minMessage="Votre code postal doit comporter minimum 4 chiffres")
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * 
      */
     private $city;
 
